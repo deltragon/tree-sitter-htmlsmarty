@@ -1,0 +1,80 @@
+================================================================================
+unpaired
+================================================================================
+
+<div>
+    content
+    <div>
+        more content with { and closing } brace
+    </div>
+    <div>
+        FIXME: this is broken currently due to the way text is handled
+        we want text to avoid eating the next span
+        fixing this would probably need an external scanner for text/all smarty tags...
+        test with {<span></span>
+    </div>
+    <div 
+        class="1"
+        data-test="{"
+        data-test-2={
+        ></div>
+    <script>
+        this is raw text now { heheh }
+    </script>
+</div>
+
+--------------------------------------------------------------------------------
+
+(fragment
+  (text)
+  (element
+    (start_tag
+      (tag_name))
+    (text)
+    (element
+      (start_tag
+        (tag_name))
+      (text)
+      (end_tag
+        (tag_name)))
+    (text)
+    (element
+      (start_tag
+        (tag_name))
+      (text)
+      (ERROR)
+      (element
+        (start_tag
+          (tag_name))
+        (end_tag
+          (tag_name)))
+      (text)
+      (end_tag
+        (tag_name)))
+    (text)
+    (element
+      (start_tag
+        (tag_name)
+        (attribute
+          (attribute_name)
+          (quoted_attribute_value
+            (attribute_value)))
+        (attribute
+          (attribute_name)
+          (quoted_attribute_value))
+        (attribute
+          (attribute_name)
+          (attribute_value)))
+      (end_tag
+        (tag_name)))
+    (text)
+    (script_element
+      (start_tag
+        (tag_name))
+      (raw_text)
+      (end_tag
+        (tag_name)))
+    (text)
+    (end_tag
+      (tag_name)))
+  (text))

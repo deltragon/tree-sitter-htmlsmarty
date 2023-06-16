@@ -1,0 +1,62 @@
+================================================================================
+comment
+================================================================================
+
+<div>
+    content
+    <!-- html comment -->
+    content
+    {* test smarty comment *}
+    {*test smarty comment*}
+    content
+    {*
+    test smarty comment
+    multiline
+    with <div> </div>
+    < > <!-- invalid stuff <hi
+    and unpaired * and { * } *
+    *}
+    content
+    <div
+        {*comment inside attribute list*}
+        {* comment inside attribute list *}
+        class="1"
+        data-test="value {* comment inside attr value *} with value"
+        ></div>
+</div>
+
+--------------------------------------------------------------------------------
+
+(fragment
+  (text)
+  (element
+    (start_tag
+      (tag_name))
+    (text)
+    (comment)
+    (text)
+    (smarty_comment)
+    (smarty_comment)
+    (text)
+    (smarty_comment)
+    (text)
+    (element
+      (start_tag
+        (tag_name)
+        (smarty_comment)
+        (smarty_comment)
+        (attribute
+          (attribute_name)
+          (quoted_attribute_value
+            (attribute_value)))
+        (attribute
+          (attribute_name)
+          (quoted_attribute_value
+            (attribute_value
+              (smarty_comment)))))
+      (end_tag
+        (tag_name)))
+    (text)
+    (end_tag
+      (tag_name)))
+  (text))
