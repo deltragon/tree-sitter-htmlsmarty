@@ -1045,13 +1045,19 @@
     "named": true,
     "fields": {
       "alternative": {
-        "multiple": true,
+        "multiple": false,
         "required": false,
         "types": [
           {
             "type": "smarty_else_attributes",
             "named": true
-          },
+          }
+        ]
+      },
+      "alternative_condition": {
+        "multiple": true,
+        "required": false,
+        "types": [
           {
             "type": "smarty_elseif_attributes",
             "named": true
@@ -1129,13 +1135,19 @@
     "named": true,
     "fields": {
       "alternative": {
-        "multiple": true,
+        "multiple": false,
         "required": false,
         "types": [
           {
             "type": "smarty_else_nodes",
             "named": true
-          },
+          }
+        ]
+      },
+      "alternative_condition": {
+        "multiple": true,
+        "required": false,
+        "types": [
           {
             "type": "smarty_elseif_nodes",
             "named": true

@@ -187,69 +187,23 @@ module.exports = grammar(html, {
       $._smarty_expression,
     ),
 
-    smarty_if_nodes: ($) => seq(
-      // TODO: this currently highlights the entire "{if", not just the "if"
-      // getting too many conflicts if i try, so just to be sure
-      alias("{if", "if"),
-      field('condition', $._smarty_if_condition),
-      "}",
-      field('body', repeat($._node)),
-      repeat(field('alternative', $.smarty_elseif_nodes)),
-      optional(field('alternative', $.smarty_else_nodes)),
-      "{/",
-      keyword("if"),
-      "}"
+    smarty_if_nodes: ($) => if_with_body(
+      $,
+      repeat($._node),
+      $.smarty_elseif_nodes,
+      $.smarty_else_nodes
     ),
+    smarty_elseif_nodes: ($) => elseif_with_body($, repeat($._node)),
+    smarty_else_nodes: ($) => else_with_body($, repeat($._node)),
 
-    smarty_elseif_nodes: $ => seq(
-      // TODO: this currently highlights the entire "{elseif", not just the "elseif"
-      // it gives me a conflict if i try
-      alias("{elseif", "elseif"),
-      field('condition', $._smarty_if_condition),
-      "}",
-      field('body', repeat($._node)),
+    smarty_if_attributes: ($) => if_with_body(
+      $,
+      repeat($._attribute),
+      $.smarty_elseif_attributes,
+      $.smarty_else_attributes
     ),
-
-    smarty_else_nodes: $ => seq(
-      // TODO: this currently highlights the entire "{else", not just the "else"
-      // it gives me a conflict if i try
-      alias("{else", "else"),
-      "}",
-      field('body', repeat($._node)),
-    ),
-
-    smarty_if_attributes: ($) => seq(
-      // TODO: this currently highlights the entire "{if", not just the "if"
-      // for some reason, this works above, but not here
-      alias("{if", "if"),
-      //"{",
-      //keyword("if"),
-      field('condition', $._smarty_if_condition),
-      "}",
-      field('body', repeat($._attribute)),
-      repeat(field('alternative', $.smarty_elseif_attributes)),
-      optional(field('alternative', $.smarty_else_attributes)),
-      "{/",
-      keyword("if"),
-      "}"
-    ),
-
-    smarty_elseif_attributes: $ => seq(
-      // TODO: this currently highlights the entire "{elseif", not just the "elseif"
-      // it gives me a conflict if i try
-      alias("{elseif", "elseif"),
-      field('condition', $._smarty_if_condition),
-      "}",
-      field('body', repeat($._attribute)),
-    ),
-
-    smarty_else_attributes: $ => seq(
-      // TODO: this currently highlights the entire "{else}", not just the "else"
-      // it gives me a conflict if i try
-      // or the else just gets eaten as an html attribute
-      alias("{else}", "else"),
-      field('body', repeat($._attribute)),
-    ),
+    smarty_elseif_attributes: ($) => elseif_with_body($, repeat($._attribute)),
+    smarty_else_attributes: ($) => else_with_body($, repeat($._attribute)),
 
     smarty_foreach_header: $ => choice(
       seq(
@@ -362,6 +316,44 @@ module.exports = grammar(html, {
     ),
   }
 });
+
+function if_with_body($, body, elseif, else_) {
+  return seq(
+    // TODO: this currently highlights the entire "{if", not just the "if"
+    // getting too many conflicts if i try, so just to be sure
+    alias("{if", "if"),
+    field('condition', $._smarty_if_condition),
+    "}",
+    field('body', body),
+    repeat(field('alternative_condition', elseif)),
+    optional(field('alternative', else_)),
+
+    "{/",
+    keyword("if"),
+    "}"
+  );
+}
+
+function elseif_with_body($, body) {
+  return seq(
+    // TODO: this currently highlights the entire "{elseif", not just the "elseif"
+    // it gives me a conflict if i try
+    alias("{elseif", "elseif"),
+    field('condition', $._smarty_if_condition),
+    "}",
+    field('body', body),
+  );
+}
+
+function else_with_body($, body) {
+  return seq(
+    // TODO: this currently highlights the entire "{else", not just the "else"
+    // it gives me a conflict if i try
+    alias("{else", "else"),
+    "}",
+    field('body', body),
+  );
+}
 
 // taken from tree-sitter-php
 function keyword(word, aliasAsWord = true) {

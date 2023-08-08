@@ -1557,7 +1557,7 @@
           "type": "REPEAT",
           "content": {
             "type": "FIELD",
-            "name": "alternative",
+            "name": "alternative_condition",
             "content": {
               "type": "SYMBOL",
               "name": "smarty_elseif_nodes"
@@ -1704,7 +1704,7 @@
           "type": "REPEAT",
           "content": {
             "type": "FIELD",
-            "name": "alternative",
+            "name": "alternative_condition",
             "content": {
               "type": "SYMBOL",
               "name": "smarty_elseif_attributes"
@@ -1790,10 +1790,14 @@
           "type": "ALIAS",
           "content": {
             "type": "STRING",
-            "value": "{else}"
+            "value": "{else"
           },
           "named": false,
           "value": "else"
+        },
+        {
+          "type": "STRING",
+          "value": "}"
         },
         {
           "type": "FIELD",
