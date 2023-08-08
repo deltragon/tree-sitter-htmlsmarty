@@ -515,6 +515,10 @@
         {
           "type": "SYMBOL",
           "name": "smarty_unary_op_expression"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "smarty_parenthesized_expression"
         }
       ]
     },
@@ -1273,6 +1277,23 @@
           }
         ]
       }
+    },
+    "smarty_parenthesized_expression": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_smarty_expression"
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
     },
     "_smarty_variable": {
       "type": "CHOICE",

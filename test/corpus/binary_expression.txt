@@ -6,6 +6,7 @@ binary expression
     content
     {"some string" || "some other string"}
     {if $a && "b"} content {/if} 
+    {if $a && ("b" || ($c && $d))} content {/if} 
     content
 </div>
 
@@ -27,6 +28,21 @@ binary expression
         (smarty_variable_name
           (smarty_name))
         (smarty_string))
+      (text))
+    (text)
+    (smarty_if_nodes
+      (smarty_binary_expression
+        (smarty_variable_name
+          (smarty_name))
+        (smarty_parenthesized_expression
+          (smarty_binary_expression
+            (smarty_string)
+            (smarty_parenthesized_expression
+              (smarty_binary_expression
+                (smarty_variable_name
+                  (smarty_name))
+                (smarty_variable_name
+                  (smarty_name)))))))
       (text))
     (text)
     (end_tag

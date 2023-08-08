@@ -52,6 +52,7 @@ module.exports = grammar(html, {
       $._smarty_primary_expression,
       $.smarty_binary_expression,
       $.smarty_unary_op_expression,
+      $.smarty_parenthesized_expression,
     ),
 
     _smarty_primary_expression: $ => choice(
@@ -104,6 +105,12 @@ module.exports = grammar(html, {
       ),
       $._smarty_expression
     )),
+
+    smarty_parenthesized_expression: $ => seq(
+      '(',
+      $._smarty_expression,
+      ')',
+    ),
 
     _smarty_variable: ($) => choice(
       $.smarty_variable_name,
