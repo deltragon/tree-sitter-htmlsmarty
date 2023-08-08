@@ -87,6 +87,10 @@
           "named": true
         },
         {
+          "type": "smarty_function_definition",
+          "named": true
+        },
+        {
           "type": "smarty_if_nodes",
           "named": true
         },
@@ -173,6 +177,10 @@
         },
         {
           "type": "smarty_foreach_nodes",
+          "named": true
+        },
+        {
+          "type": "smarty_function_definition",
           "named": true
         },
         {
@@ -567,6 +575,10 @@
             "named": true
           },
           {
+            "type": "smarty_function_definition",
+            "named": true
+          },
+          {
             "type": "smarty_if_nodes",
             "named": true
           },
@@ -686,6 +698,10 @@
           },
           {
             "type": "smarty_foreach_nodes",
+            "named": true
+          },
+          {
+            "type": "smarty_function_definition",
             "named": true
           },
           {
@@ -838,6 +854,10 @@
           "named": true
         },
         {
+          "type": "smarty_function_definition",
+          "named": true
+        },
+        {
           "type": "smarty_if_nodes",
           "named": true
         },
@@ -854,6 +874,146 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "smarty_function_definition",
+    "named": true,
+    "fields": {
+      "argument_name": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "smarty_name",
+            "named": true
+          }
+        ]
+      },
+      "argument_value": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "smarty_boolean",
+            "named": true
+          },
+          {
+            "type": "smarty_float",
+            "named": true
+          },
+          {
+            "type": "smarty_integer",
+            "named": true
+          },
+          {
+            "type": "smarty_null",
+            "named": true
+          },
+          {
+            "type": "smarty_string",
+            "named": true
+          }
+        ]
+      },
+      "arguments": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "=",
+            "named": false
+          },
+          {
+            "type": "smarty_boolean",
+            "named": true
+          },
+          {
+            "type": "smarty_float",
+            "named": true
+          },
+          {
+            "type": "smarty_integer",
+            "named": true
+          },
+          {
+            "type": "smarty_name",
+            "named": true
+          },
+          {
+            "type": "smarty_null",
+            "named": true
+          },
+          {
+            "type": "smarty_string",
+            "named": true
+          }
+        ]
+      },
+      "body": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "doctype",
+            "named": true
+          },
+          {
+            "type": "element",
+            "named": true
+          },
+          {
+            "type": "erroneous_end_tag",
+            "named": true
+          },
+          {
+            "type": "script_element",
+            "named": true
+          },
+          {
+            "type": "smarty_assignment",
+            "named": true
+          },
+          {
+            "type": "smarty_comment",
+            "named": true
+          },
+          {
+            "type": "smarty_foreach_nodes",
+            "named": true
+          },
+          {
+            "type": "smarty_function_definition",
+            "named": true
+          },
+          {
+            "type": "smarty_if_nodes",
+            "named": true
+          },
+          {
+            "type": "smarty_interpolation",
+            "named": true
+          },
+          {
+            "type": "style_element",
+            "named": true
+          },
+          {
+            "type": "text",
+            "named": true
+          }
+        ]
+      },
+      "function_name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "smarty_name",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -984,6 +1144,10 @@
           },
           {
             "type": "smarty_foreach_nodes",
+            "named": true
+          },
+          {
+            "type": "smarty_function_definition",
             "named": true
           },
           {
@@ -1375,6 +1539,10 @@
   },
   {
     "type": "foreach",
+    "named": false
+  },
+  {
+    "type": "function",
     "named": false
   },
   {

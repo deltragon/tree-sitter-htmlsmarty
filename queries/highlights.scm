@@ -16,3 +16,4 @@
 "else" @keyword
 "foreach" @keyword
 "as" @keyword
+"function" @keyword

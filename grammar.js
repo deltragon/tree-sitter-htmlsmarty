@@ -263,6 +263,22 @@ module.exports = grammar(html, {
       "}"
     ),
 
+    smarty_function_definition: $ => seq(
+      "{",
+      keyword("function"),
+      field("function_name", $.smarty_name),
+      field("arguments", repeat(seq(
+        field("argument_name", $.smarty_name),
+        "=",
+        field("argument_value", $._smarty_literal),
+      ))),
+      "}",
+      field("body", repeat($._node)),
+      "{/",
+      keyword("function"),
+      "}"
+    ),
+
     // in text
     // FIXME: see comment in test/corpus/unpaired.txt for why this is broken in the edge case of
     // `text {<valid-tag/>`
@@ -276,6 +292,7 @@ module.exports = grammar(html, {
       $.smarty_foreach_nodes,
       $.smarty_interpolation,
       $.smarty_assignment,
+      $.smarty_function_definition,
       $.element,
       $.script_element,
       $.style_element,
