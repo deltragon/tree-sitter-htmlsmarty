@@ -1,0 +1,38 @@
+================================================================================
+if_node
+================================================================================
+
+<div>
+    content
+    {if $test_variable}
+    <span>
+        hello!
+    </span>
+    {/if}
+    content
+</div>
+
+--------------------------------------------------------------------------------
+
+(fragment
+  (text)
+  (element
+    (start_tag
+      (tag_name))
+    (text)
+    (smarty_if_nodes
+      (smarty_if_condition
+        (smarty_variable_name
+          (smarty_name)))
+      (text)
+      (element
+        (start_tag
+          (tag_name))
+        (text)
+        (end_tag
+          (tag_name)))
+      (text))
+    (text)
+    (end_tag
+      (tag_name)))
+  (text))

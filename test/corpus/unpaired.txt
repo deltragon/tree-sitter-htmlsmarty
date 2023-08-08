@@ -5,6 +5,8 @@ unpaired
 <div>
     content
     <div>
+        FIXME: this is also broken now, curly braces don't count as text anymore
+        would probably also need an external scanner (or alternatively a way to de-prioritize the text rule)
         more content with { and closing } brace
     </div>
     <div>
@@ -34,6 +36,10 @@ unpaired
     (element
       (start_tag
         (tag_name))
+      (text)
+      (ERROR
+        (UNEXPECTED 'c')
+        (UNEXPECTED 'b'))
       (text)
       (end_tag
         (tag_name)))

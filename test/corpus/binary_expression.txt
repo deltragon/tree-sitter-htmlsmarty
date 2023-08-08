@@ -1,0 +1,35 @@
+================================================================================
+binary expression
+================================================================================
+
+<div>
+    content
+    {"some string" || "some other string"}
+    {if $a && "b"} content {/if} 
+    content
+</div>
+
+--------------------------------------------------------------------------------
+
+(fragment
+  (text)
+  (element
+    (start_tag
+      (tag_name))
+    (text)
+    (smarty_interpolation
+      (smarty_binary_expression
+        (smarty_string)
+        (smarty_string)))
+    (text)
+    (smarty_if_nodes
+      (smarty_if_condition
+        (smarty_binary_expression
+          (smarty_variable_name
+            (smarty_name))
+          (smarty_string)))
+      (text))
+    (text)
+    (end_tag
+      (tag_name)))
+  (text))

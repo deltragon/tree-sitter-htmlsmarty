@@ -1,0 +1,41 @@
+================================================================================
+variable
+================================================================================
+
+<div>
+    content
+    {$smarty_variable}
+    content
+    {$smarty_object.member_access}
+    {$smarty_object.member_access.nested}
+</div>
+
+--------------------------------------------------------------------------------
+
+(fragment
+  (text)
+  (element
+    (start_tag
+      (tag_name))
+    (text)
+    (smarty_interpolation
+      (smarty_variable_name
+        (smarty_name)))
+    (text)
+    (smarty_interpolation
+      (smarty_member_access_expression
+        (smarty_variable_name
+          (smarty_name))
+        (smarty_name)))
+    (text)
+    (smarty_interpolation
+      (smarty_member_access_expression
+        (smarty_member_access_expression
+          (smarty_variable_name
+            (smarty_name))
+          (smarty_name))
+        (smarty_name)))
+    (text)
+    (end_tag
+      (tag_name)))
+  (text))

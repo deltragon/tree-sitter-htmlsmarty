@@ -1,28 +1,20 @@
 ================================================================================
-comment
+if_attribute
 ================================================================================
 
 <div>
     content
-    <!-- html comment -->
+    <span
+        attr="hi"
+        {if $test_variable}
+        attr2="two"
+        attr3=three
+        {/if}
+        attr4="four"
+    >
+        hello!
+    </span>
     content
-    {* test smarty comment *}
-    {*test smarty comment*}
-    content
-    {*
-    test smarty comment
-    multiline
-    with <div> </div>
-    < > <!-- invalid stuff <hi
-    and unpaired * and { * } *
-    *}
-    content
-    <div
-        {*comment inside attribute list*}
-        {* comment inside attribute list *}
-        class="1"
-        data-test="value {* comment inside attr value *} with value"
-        ></div>
 </div>
 
 --------------------------------------------------------------------------------
@@ -33,28 +25,29 @@ comment
     (start_tag
       (tag_name))
     (text)
-    (comment)
-    (text)
-    (smarty_comment)
-    (text)
-    (smarty_comment)
-    (text)
-    (smarty_comment)
-    (text)
     (element
       (start_tag
         (tag_name)
-        (smarty_comment)
-        (smarty_comment)
         (attribute
           (attribute_name)
           (quoted_attribute_value
             (attribute_value)))
+        (smarty_if_attributes
+          (smarty_if_condition
+            (smarty_variable_name
+              (smarty_name)))
+          (attribute
+            (attribute_name)
+            (quoted_attribute_value
+              (attribute_value)))
+          (attribute
+            (attribute_name)
+            (attribute_value)))
         (attribute
           (attribute_name)
           (quoted_attribute_value
-            (attribute_value
-              (smarty_comment)))))
+            (attribute_value))))
+      (text)
       (end_tag
         (tag_name)))
     (text)
