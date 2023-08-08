@@ -24,6 +24,7 @@ if_attribute
         {else}
             some="attr"
         {/if}
+        {if $some_variable}attr=unqoted{/if}
     />
     content
 </div>
@@ -80,7 +81,13 @@ if_attribute
             (attribute
               (attribute_name)
               (quoted_attribute_value
-                (attribute_value)))))))
+                (attribute_value)))))
+        (smarty_if_attributes
+          (smarty_variable_name
+            (smarty_name))
+          (attribute
+            (attribute_name)
+            (attribute_value)))))
     (text)
     (end_tag
       (tag_name)))

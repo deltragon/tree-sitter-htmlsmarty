@@ -257,7 +257,10 @@ module.exports = grammar(html, {
       $.smarty_if_attributes,
     ),
 
-    attribute_name: $ => /([^<>"'/=\s{]|\{[^*<>"'/=\s{])+/,
+    attribute_name: $ => /[^<>"'/=\s{]+/, // disallow { in attribute names
+    
+    // this is necessary as otherwise we get errors 
+    attribute_value: $ => /[^<>"'=\s{]+/, // disallow { in unqoted attribute values
 
     sq_attribute_value_fragment: $ => repeat1(choice(
       /([^'{]|\{[^*'])+/,

@@ -69,8 +69,8 @@ unpaired
           (attribute_name)
           (quoted_attribute_value))
         (attribute
-          (attribute_name)
-          (attribute_value)))
+          (attribute_name))
+        (ERROR))
       (end_tag
         (tag_name)))
     (text)
