@@ -1289,6 +1289,22 @@
         {
           "type": "SYMBOL",
           "name": "smarty_string"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "smarty_integer"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "smarty_float"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "smarty_boolean"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "smarty_null"
         }
       ]
     },
@@ -1411,6 +1427,42 @@
                 "value": "\""
               }
             ]
+          }
+        ]
+      }
+    },
+    "smarty_boolean": {
+      "type": "PATTERN",
+      "value": "[Tt][Rr][Uu][Ee]|[Ff][Aa][Ll][Ss][Ee]"
+    },
+    "smarty_null": {
+      "type": "PATTERN",
+      "value": "[nN][uU][lL][lL]"
+    },
+    "smarty_float": {
+      "type": "PATTERN",
+      "value": "\\d*((\\.\\d*)?([eE][\\+-]?\\d+)|(\\.\\d*)([eE][\\+-]?\\d+)?)"
+    },
+    "smarty_integer": {
+      "type": "TOKEN",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "PATTERN",
+            "value": "[1-9]\\d*"
+          },
+          {
+            "type": "PATTERN",
+            "value": "0[0-7]*"
+          },
+          {
+            "type": "PATTERN",
+            "value": "0[xX][0-9a-fA-F]+"
+          },
+          {
+            "type": "PATTERN",
+            "value": "0[bB][01]+"
           }
         ]
       }

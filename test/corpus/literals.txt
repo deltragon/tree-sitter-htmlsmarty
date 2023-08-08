@@ -1,0 +1,80 @@
+================================================================================
+literals
+================================================================================
+
+<div>
+    content
+    {$smarty_variable = 1}
+    {$smarty_variable = 1.1}
+    {$smarty_variable = true}
+    {$smarty_variable = True}
+    {$smarty_variable = TRUE}
+    {$smarty_variable = false}
+    {$smarty_variable = null}
+    {$smarty_variable = NULL}
+    {$smarty_variable = "asdfs"}
+    {$smarty_variable = 'asdfs'}
+    content
+</div>
+
+--------------------------------------------------------------------------------
+
+(fragment
+  (text)
+  (element
+    (start_tag
+      (tag_name))
+    (text)
+    (smarty_assignment
+      (smarty_variable_name
+        (smarty_name))
+      (smarty_integer))
+    (text)
+    (smarty_assignment
+      (smarty_variable_name
+        (smarty_name))
+      (smarty_float))
+    (text)
+    (smarty_assignment
+      (smarty_variable_name
+        (smarty_name))
+      (smarty_boolean))
+    (text)
+    (smarty_assignment
+      (smarty_variable_name
+        (smarty_name))
+      (smarty_boolean))
+    (text)
+    (smarty_assignment
+      (smarty_variable_name
+        (smarty_name))
+      (smarty_boolean))
+    (text)
+    (smarty_assignment
+      (smarty_variable_name
+        (smarty_name))
+      (smarty_boolean))
+    (text)
+    (smarty_assignment
+      (smarty_variable_name
+        (smarty_name))
+      (smarty_null))
+    (text)
+    (smarty_assignment
+      (smarty_variable_name
+        (smarty_name))
+      (smarty_null))
+    (text)
+    (smarty_assignment
+      (smarty_variable_name
+        (smarty_name))
+      (smarty_string))
+    (text)
+    (smarty_assignment
+      (smarty_variable_name
+        (smarty_name))
+      (smarty_string))
+    (text)
+    (end_tag
+      (tag_name)))
+  (text))

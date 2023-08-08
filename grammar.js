@@ -112,6 +112,10 @@ module.exports = grammar(html, {
 
     _smarty_literal: ($) => choice(
       $.smarty_string,
+      $.smarty_integer,
+      $.smarty_float,
+      $.smarty_boolean,
+      $.smarty_null,
     ),
 
     smarty_member_access_expression: ($) => seq(
@@ -148,6 +152,25 @@ module.exports = grammar(html, {
         '"'
       )
     )),
+
+    smarty_boolean: $ => /[Tt][Rr][Uu][Ee]|[Ff][Aa][Ll][Ss][Ee]/,
+
+    smarty_null: $ => keyword('null', false),
+
+    smarty_float: $ => /\d*((\.\d*)?([eE][\+-]?\d+)|(\.\d*)([eE][\+-]?\d+)?)/,
+
+    smarty_integer: $ => {
+      const decimal = /[1-9]\d*/
+      const octal = /0[0-7]*/
+      const hex = /0[xX][0-9a-fA-F]+/
+      const binary = /0[bB][01]+/
+      return token(choice(
+        decimal,
+        octal,
+        hex,
+        binary
+      ))
+  },
 
     smarty_variable_name: $ => seq('$', $.smarty_name),
 

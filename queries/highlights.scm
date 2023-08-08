@@ -6,6 +6,10 @@
   name: (smarty_name) @property)
 
 (smarty_string) @string
+(smarty_integer) @number
+(smarty_float) @number
+(smarty_boolean) @constant.builtin
+(smarty_null) @constant.builtin
 
 "if" @keyword
 "elseif" @keyword
