@@ -5,9 +5,18 @@ if_node
 <div>
     content
     {if $test_variable}
-    <span>
-        hello!
-    </span>
+        <span>
+            hello!
+        </span>
+    {elseif $test_variable_2}
+        hi!
+    {elseif $test_variable_3}
+        {if $other_test}
+            <div/>
+        {else}
+            <div>
+            </div>
+        {/if}
     {/if}
     content
 </div>
@@ -21,9 +30,8 @@ if_node
       (tag_name))
     (text)
     (smarty_if_nodes
-      (smarty_if_condition
-        (smarty_variable_name
-          (smarty_name)))
+      (smarty_variable_name
+        (smarty_name))
       (text)
       (element
         (start_tag
@@ -31,7 +39,33 @@ if_node
         (text)
         (end_tag
           (tag_name)))
-      (text))
+      (text)
+      (smarty_elseif_nodes
+        (smarty_variable_name
+          (smarty_name))
+        (text))
+      (smarty_elseif_nodes
+        (smarty_variable_name
+          (smarty_name))
+        (text)
+        (smarty_if_nodes
+          (smarty_variable_name
+            (smarty_name))
+          (text)
+          (element
+            (self_closing_tag
+              (tag_name)))
+          (text)
+          (smarty_else_nodes
+            (text)
+            (element
+              (start_tag
+                (tag_name))
+              (text)
+              (end_tag
+                (tag_name)))
+            (text)))
+        (text)))
     (text)
     (end_tag
       (tag_name)))

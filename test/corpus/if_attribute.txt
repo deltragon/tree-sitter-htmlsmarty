@@ -7,13 +7,24 @@ if_attribute
     <span
         attr="hi"
         {if $test_variable}
-        attr2="two"
-        attr3=three
+            attr2="two"
+            attr3=three
+        {elseif "test"}
+            attr35="three point 5"
+        {else}
+            {* none *}
         {/if}
         attr4="four"
     >
         hello!
     </span>
+    <div
+        {if $test_variable}
+            {* none *}
+        {else}
+            some="attr"
+        {/if}
+    />
     content
 </div>
 
@@ -33,16 +44,23 @@ if_attribute
           (quoted_attribute_value
             (attribute_value)))
         (smarty_if_attributes
-          (smarty_if_condition
-            (smarty_variable_name
-              (smarty_name)))
+          (smarty_variable_name
+            (smarty_name))
           (attribute
             (attribute_name)
             (quoted_attribute_value
               (attribute_value)))
           (attribute
             (attribute_name)
-            (attribute_value)))
+            (attribute_value))
+          (smarty_elseif_attributes
+            (smarty_string)
+            (attribute
+              (attribute_name)
+              (quoted_attribute_value
+                (attribute_value))))
+          (smarty_else_attributes
+            (smarty_comment)))
         (attribute
           (attribute_name)
           (quoted_attribute_value
@@ -50,6 +68,19 @@ if_attribute
       (text)
       (end_tag
         (tag_name)))
+    (text)
+    (element
+      (self_closing_tag
+        (tag_name)
+        (smarty_if_attributes
+          (smarty_variable_name
+            (smarty_name))
+          (smarty_comment)
+          (smarty_else_attributes
+            (attribute
+              (attribute_name)
+              (quoted_attribute_value
+                (attribute_value)))))))
     (text)
     (end_tag
       (tag_name)))

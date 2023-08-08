@@ -23,11 +23,10 @@ binary expression
         (smarty_string)))
     (text)
     (smarty_if_nodes
-      (smarty_if_condition
-        (smarty_binary_expression
-          (smarty_variable_name
-            (smarty_name))
-          (smarty_string)))
+      (smarty_binary_expression
+        (smarty_variable_name
+          (smarty_name))
+        (smarty_string))
       (text))
     (text)
     (end_tag

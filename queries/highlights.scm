@@ -8,5 +8,7 @@
 (smarty_string) @string
 
 "if" @keyword
+"elseif" @keyword
+"else" @keyword
 "foreach" @keyword
 "as" @keyword

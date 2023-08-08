@@ -145,19 +145,39 @@ module.exports = grammar(html, {
 
     smarty_name: $ => /[_a-zA-Z\u00A1-\u00ff][_a-zA-Z\u00A1-\u00ff\d]*/,
 
-    smarty_if_condition: ($) => choice(
+    _smarty_if_condition: ($) => choice(
       $._smarty_expression,
     ),
 
     smarty_if_nodes: ($) => seq(
-      "{",
-      keyword("if"),
-      $.smarty_if_condition,
+      // TODO: this currently highlights the entire "{if", not just the "if"
+      // getting too many conflicts if i try, so just to be sure
+      alias("{if", "if"),
+      field('condition', $._smarty_if_condition),
       "}",
-      repeat($._node),
+      field('body', repeat($._node)),
+      repeat(field('alternative', $.smarty_elseif_nodes)),
+      optional(field('alternative', $.smarty_else_nodes)),
       "{/",
       keyword("if"),
       "}"
+    ),
+
+    smarty_elseif_nodes: $ => seq(
+      // TODO: this currently highlights the entire "{elseif", not just the "elseif"
+      // it gives me a conflict if i try
+      alias("{elseif", "elseif"),
+      field('condition', $._smarty_if_condition),
+      "}",
+      field('body', repeat($._node)),
+    ),
+
+    smarty_else_nodes: $ => seq(
+      // TODO: this currently highlights the entire "{else", not just the "else"
+      // it gives me a conflict if i try
+      alias("{else", "else"),
+      "}",
+      field('body', repeat($._node)),
     ),
 
     smarty_if_attributes: ($) => seq(
@@ -166,12 +186,31 @@ module.exports = grammar(html, {
       alias("{if", "if"),
       //"{",
       //keyword("if"),
-      $.smarty_if_condition,
+      field('condition', $._smarty_if_condition),
       "}",
-      repeat($._attribute),
+      field('body', repeat($._attribute)),
+      repeat(field('alternative', $.smarty_elseif_attributes)),
+      optional(field('alternative', $.smarty_else_attributes)),
       "{/",
       keyword("if"),
       "}"
+    ),
+
+    smarty_elseif_attributes: $ => seq(
+      // TODO: this currently highlights the entire "{elseif", not just the "elseif"
+      // it gives me a conflict if i try
+      alias("{elseif", "elseif"),
+      field('condition', $._smarty_if_condition),
+      "}",
+      field('body', repeat($._attribute)),
+    ),
+
+    smarty_else_attributes: $ => seq(
+      // TODO: this currently highlights the entire "{else}", not just the "else"
+      // it gives me a conflict if i try
+      // or the else just gets eaten as an html attribute
+      alias("{else}", "else"),
+      field('body', repeat($._attribute)),
     ),
 
     smarty_foreach_header: $ => choice(
