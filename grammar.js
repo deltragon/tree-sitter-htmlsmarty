@@ -128,6 +128,14 @@ module.exports = grammar(html, {
       '}'
     ),
 
+    smarty_assignment: ($) => seq(
+      '{',
+      field('left', $._smarty_variable),
+      "=",
+      field('right', $._smarty_expression),
+      '}'
+    ),
+
     smarty_string: $ => token(choice(
       seq(
         "'",
@@ -244,6 +252,7 @@ module.exports = grammar(html, {
       $.smarty_if_nodes,
       $.smarty_foreach_nodes,
       $.smarty_interpolation,
+      $.smarty_assignment,
       $.element,
       $.script_element,
       $.style_element,

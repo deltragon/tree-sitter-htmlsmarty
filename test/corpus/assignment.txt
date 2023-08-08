@@ -1,0 +1,55 @@
+================================================================================
+assignment
+================================================================================
+
+<div>
+    content
+    {$smarty_variable = "content"}
+    content
+    {$smarty_object.member_access=$other_variable}
+    {$smarty_object.member_access.nested = $other_variable.nested && $other_variable.other_nested.deep}
+</div>
+
+--------------------------------------------------------------------------------
+
+(fragment
+  (text)
+  (element
+    (start_tag
+      (tag_name))
+    (text)
+    (smarty_assignment
+      (smarty_variable_name
+        (smarty_name))
+      (smarty_string))
+    (text)
+    (smarty_assignment
+      (smarty_member_access_expression
+        (smarty_variable_name
+          (smarty_name))
+        (smarty_name))
+      (smarty_variable_name
+        (smarty_name)))
+    (text)
+    (smarty_assignment
+      (smarty_member_access_expression
+        (smarty_member_access_expression
+          (smarty_variable_name
+            (smarty_name))
+          (smarty_name))
+        (smarty_name))
+      (smarty_binary_expression
+        (smarty_member_access_expression
+          (smarty_variable_name
+            (smarty_name))
+          (smarty_name))
+        (smarty_member_access_expression
+          (smarty_member_access_expression
+            (smarty_variable_name
+              (smarty_name))
+            (smarty_name))
+          (smarty_name))))
+    (text)
+    (end_tag
+      (tag_name)))
+  (text))

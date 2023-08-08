@@ -75,6 +75,10 @@
           "named": true
         },
         {
+          "type": "smarty_assignment",
+          "named": true
+        },
+        {
           "type": "smarty_comment",
           "named": true
         },
@@ -157,6 +161,10 @@
         },
         {
           "type": "script_element",
+          "named": true
+        },
+        {
+          "type": "smarty_assignment",
           "named": true
         },
         {
@@ -249,6 +257,52 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "smarty_assignment",
+    "named": true,
+    "fields": {
+      "left": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "smarty_member_access_expression",
+            "named": true
+          },
+          {
+            "type": "smarty_variable_name",
+            "named": true
+          }
+        ]
+      },
+      "right": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "smarty_binary_expression",
+            "named": true
+          },
+          {
+            "type": "smarty_member_access_expression",
+            "named": true
+          },
+          {
+            "type": "smarty_string",
+            "named": true
+          },
+          {
+            "type": "smarty_unary_op_expression",
+            "named": true
+          },
+          {
+            "type": "smarty_variable_name",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -453,6 +507,10 @@
             "named": true
           },
           {
+            "type": "smarty_assignment",
+            "named": true
+          },
+          {
             "type": "smarty_comment",
             "named": true
           },
@@ -552,6 +610,10 @@
           },
           {
             "type": "script_element",
+            "named": true
+          },
+          {
+            "type": "smarty_assignment",
             "named": true
           },
           {
@@ -661,6 +723,10 @@
         },
         {
           "type": "script_element",
+          "named": true
+        },
+        {
+          "type": "smarty_assignment",
           "named": true
         },
         {
@@ -794,6 +860,10 @@
           },
           {
             "type": "script_element",
+            "named": true
+          },
+          {
+            "type": "smarty_assignment",
             "named": true
           },
           {
