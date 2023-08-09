@@ -205,6 +205,24 @@ module.exports = grammar(html, {
     smarty_elseif_attributes: ($) => elseif_with_body($, repeat($._attribute)),
     smarty_else_attributes: ($) => else_with_body($, repeat($._attribute)),
 
+    smarty_if_attrval_sq: ($) => if_with_body(
+      $,
+      repeat($._sq_attribute_value_fragment),
+      $.smarty_elseif_attrval_sq,
+      $.smarty_else_attrval_sq
+    ),
+    smarty_elseif_attrval_sq: ($) => elseif_with_body($, repeat($._sq_attribute_value_fragment)),
+    smarty_else_attrval_sq: ($) => else_with_body($, repeat($._sq_attribute_value_fragment)),
+
+    smarty_if_attrval_dq: ($) => if_with_body(
+      $,
+      repeat($._dq_attribute_value_fragment),
+      $.smarty_elseif_attrval_dq,
+      $.smarty_else_attrval_dq
+    ),
+    smarty_elseif_attrval_dq: ($) => elseif_with_body($, repeat($._dq_attribute_value_fragment)),
+    smarty_else_attrval_dq: ($) => else_with_body($, repeat($._dq_attribute_value_fragment)),
+
     smarty_foreach_header: $ => choice(
       seq(
         $._smarty_expression,
@@ -268,22 +286,26 @@ module.exports = grammar(html, {
     ),
 
     attribute_name: $ => /[^<>"'/=\s{]+/, // disallow { in attribute names
-    
-    // this is necessary as otherwise we get errors 
+
+    // this is necessary as otherwise we get errors
     attribute_value: $ => /[^<>"'=\s{]+/, // disallow { in unqoted attribute values
 
-    sq_attribute_value_fragment: $ => repeat1(choice(
-      /([^'{]|\{[^*'])+/,
-      $.smarty_comment
-    )),
-    dq_attribute_value_fragment: $ => repeat1(choice(
-      /([^"{]|\{[^*"])+/,
-      $.smarty_comment
-    )),
+    _sq_attribute_value_fragment: $ => choice(
+      $.smarty_if_attrval_sq,
+      $.smarty_comment,
+      $.smarty_interpolation,
+      /[^'{]+/, // i do not understand how I can allow {, and still give the other rules precedence...
+    ),
+    _dq_attribute_value_fragment: $ => choice(
+      $.smarty_if_attrval_dq,
+      $.smarty_comment,
+      $.smarty_interpolation,
+      /[^"{]+/,
+    ),
 
     quoted_attribute_value: $ => choice(
-      seq("'", optional(alias($.sq_attribute_value_fragment, $.attribute_value)), optional("{"), "'"),
-      seq('"', optional(alias($.dq_attribute_value_fragment, $.attribute_value)), optional("{"), '"'),
+      seq("'", optional(alias(repeat1($._sq_attribute_value_fragment), $.attribute_value)), optional("{"), "'"),
+      seq('"', optional(alias(repeat1($._dq_attribute_value_fragment), $.attribute_value)), optional("{"), '"'),
     ),
 
 

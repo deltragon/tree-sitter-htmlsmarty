@@ -33,6 +33,18 @@
         {
           "type": "smarty_comment",
           "named": true
+        },
+        {
+          "type": "smarty_if_attrval_dq",
+          "named": true
+        },
+        {
+          "type": "smarty_if_attrval_sq",
+          "named": true
+        },
+        {
+          "type": "smarty_interpolation",
+          "named": true
         }
       ]
     }
@@ -551,6 +563,54 @@
     }
   },
   {
+    "type": "smarty_else_attrval_dq",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "smarty_comment",
+            "named": true
+          },
+          {
+            "type": "smarty_if_attrval_dq",
+            "named": true
+          },
+          {
+            "type": "smarty_interpolation",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "smarty_else_attrval_sq",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "smarty_comment",
+            "named": true
+          },
+          {
+            "type": "smarty_if_attrval_sq",
+            "named": true
+          },
+          {
+            "type": "smarty_interpolation",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "smarty_else_nodes",
     "named": true,
     "fields": {
@@ -628,6 +688,146 @@
           },
           {
             "type": "smarty_if_attributes",
+            "named": true
+          }
+        ]
+      },
+      "condition": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "smarty_binary_expression",
+            "named": true
+          },
+          {
+            "type": "smarty_boolean",
+            "named": true
+          },
+          {
+            "type": "smarty_float",
+            "named": true
+          },
+          {
+            "type": "smarty_integer",
+            "named": true
+          },
+          {
+            "type": "smarty_member_access_expression",
+            "named": true
+          },
+          {
+            "type": "smarty_null",
+            "named": true
+          },
+          {
+            "type": "smarty_parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "smarty_string",
+            "named": true
+          },
+          {
+            "type": "smarty_unary_op_expression",
+            "named": true
+          },
+          {
+            "type": "smarty_variable_name",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "smarty_elseif_attrval_dq",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "smarty_comment",
+            "named": true
+          },
+          {
+            "type": "smarty_if_attrval_dq",
+            "named": true
+          },
+          {
+            "type": "smarty_interpolation",
+            "named": true
+          }
+        ]
+      },
+      "condition": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "smarty_binary_expression",
+            "named": true
+          },
+          {
+            "type": "smarty_boolean",
+            "named": true
+          },
+          {
+            "type": "smarty_float",
+            "named": true
+          },
+          {
+            "type": "smarty_integer",
+            "named": true
+          },
+          {
+            "type": "smarty_member_access_expression",
+            "named": true
+          },
+          {
+            "type": "smarty_null",
+            "named": true
+          },
+          {
+            "type": "smarty_parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "smarty_string",
+            "named": true
+          },
+          {
+            "type": "smarty_unary_op_expression",
+            "named": true
+          },
+          {
+            "type": "smarty_variable_name",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "smarty_elseif_attrval_sq",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "smarty_comment",
+            "named": true
+          },
+          {
+            "type": "smarty_if_attrval_sq",
+            "named": true
+          },
+          {
+            "type": "smarty_interpolation",
             "named": true
           }
         ]
@@ -1078,6 +1278,186 @@
           },
           {
             "type": "smarty_if_attributes",
+            "named": true
+          }
+        ]
+      },
+      "condition": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "smarty_binary_expression",
+            "named": true
+          },
+          {
+            "type": "smarty_boolean",
+            "named": true
+          },
+          {
+            "type": "smarty_float",
+            "named": true
+          },
+          {
+            "type": "smarty_integer",
+            "named": true
+          },
+          {
+            "type": "smarty_member_access_expression",
+            "named": true
+          },
+          {
+            "type": "smarty_null",
+            "named": true
+          },
+          {
+            "type": "smarty_parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "smarty_string",
+            "named": true
+          },
+          {
+            "type": "smarty_unary_op_expression",
+            "named": true
+          },
+          {
+            "type": "smarty_variable_name",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "smarty_if_attrval_dq",
+    "named": true,
+    "fields": {
+      "alternative": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "smarty_else_attrval_dq",
+            "named": true
+          }
+        ]
+      },
+      "alternative_condition": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "smarty_elseif_attrval_dq",
+            "named": true
+          }
+        ]
+      },
+      "body": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "smarty_comment",
+            "named": true
+          },
+          {
+            "type": "smarty_if_attrval_dq",
+            "named": true
+          },
+          {
+            "type": "smarty_interpolation",
+            "named": true
+          }
+        ]
+      },
+      "condition": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "smarty_binary_expression",
+            "named": true
+          },
+          {
+            "type": "smarty_boolean",
+            "named": true
+          },
+          {
+            "type": "smarty_float",
+            "named": true
+          },
+          {
+            "type": "smarty_integer",
+            "named": true
+          },
+          {
+            "type": "smarty_member_access_expression",
+            "named": true
+          },
+          {
+            "type": "smarty_null",
+            "named": true
+          },
+          {
+            "type": "smarty_parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "smarty_string",
+            "named": true
+          },
+          {
+            "type": "smarty_unary_op_expression",
+            "named": true
+          },
+          {
+            "type": "smarty_variable_name",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "smarty_if_attrval_sq",
+    "named": true,
+    "fields": {
+      "alternative": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "smarty_else_attrval_sq",
+            "named": true
+          }
+        ]
+      },
+      "alternative_condition": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "smarty_elseif_attrval_sq",
+            "named": true
+          }
+        ]
+      },
+      "body": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "smarty_comment",
+            "named": true
+          },
+          {
+            "type": "smarty_if_attrval_sq",
+            "named": true
+          },
+          {
+            "type": "smarty_interpolation",
             "named": true
           }
         ]
