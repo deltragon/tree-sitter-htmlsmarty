@@ -8,6 +8,7 @@ unpaired
         FIXME: this is also broken now, curly braces don't count as text anymore
         would probably also need an external scanner (or alternatively a way to de-prioritize the text rule)
         more content with { and closing } brace
+        and with two { opening { and one closing? }
     </div>
     <div>
         FIXME: this is broken currently due to the way text is handled
@@ -37,9 +38,20 @@ unpaired
       (start_tag
         (tag_name))
       (text)
-      (ERROR
-        (UNEXPECTED 'c')
-        (UNEXPECTED 'b'))
+      (smarty_function_call
+        (smarty_name)
+        (ERROR
+          (smarty_name)))
+      (text)
+      (smarty_function_call
+        (smarty_name)
+        (MISSING "}"))
+      (text)
+      (smarty_function_call
+        (smarty_name)
+        (ERROR
+          (smarty_name)
+          (UNEXPECTED 'c')))
       (text)
       (end_tag
         (tag_name)))

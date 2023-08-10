@@ -5,6 +5,9 @@
 (smarty_member_access_expression
   name: (smarty_name) @property)
 
+(smarty_function_call
+  function_name: (smarty_name) @function)
+
 (smarty_string) @string
 (smarty_integer) @number
 (smarty_float) @number

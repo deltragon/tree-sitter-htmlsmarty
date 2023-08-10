@@ -232,8 +232,7 @@ module.exports = grammar(html, {
     ),
 
     smarty_foreach_nodes: ($) => seq(
-      "{",
-      keyword("foreach"),
+      alias("{foreach", "foreach"),
       $.smarty_foreach_header,
       "}",
       repeat($._node),
@@ -243,8 +242,7 @@ module.exports = grammar(html, {
     ),
 
     smarty_function_definition: $ => seq(
-      "{",
-      keyword("function"),
+      alias("{function", "function"),
       field("function_name", $.smarty_name),
       field("arguments", repeat(seq(
         field("argument_name", $.smarty_name),
@@ -255,6 +253,17 @@ module.exports = grammar(html, {
       field("body", repeat($._node)),
       "{/",
       keyword("function"),
+      "}"
+    ),
+
+    smarty_function_call: $ => seq(
+      "{",
+      field("function_name", $.smarty_name),
+      field("arguments", repeat(seq(
+        field("argument_name", $.smarty_name),
+        "=",
+        field("argument_value", $._smarty_expression),
+      ))),
       "}"
     ),
 
@@ -272,6 +281,7 @@ module.exports = grammar(html, {
       $.smarty_interpolation,
       $.smarty_assignment,
       $.smarty_function_definition,
+      $.smarty_function_call,
       $.element,
       $.script_element,
       $.style_element,
@@ -283,6 +293,7 @@ module.exports = grammar(html, {
       $.attribute,
       $.smarty_comment,
       $.smarty_if_attributes,
+      $.smarty_function_call,
     ),
 
     attribute_name: $ => /[^<>"'/=\s{]+/, // disallow { in attribute names
@@ -294,12 +305,14 @@ module.exports = grammar(html, {
       $.smarty_if_attrval_sq,
       $.smarty_comment,
       $.smarty_interpolation,
+      $.smarty_function_call,
       /[^'{]+/, // i do not understand how I can allow {, and still give the other rules precedence...
     ),
     _dq_attribute_value_fragment: $ => choice(
       $.smarty_if_attrval_dq,
       $.smarty_comment,
       $.smarty_interpolation,
+      $.smarty_function_call,
       /[^"{]+/,
     ),
 
