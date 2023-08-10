@@ -52,8 +52,9 @@ comment
         (attribute
           (attribute_name)
           (quoted_attribute_value
-            (attribute_value
-              (smarty_comment)))))
+            (attribute_value)
+            (smarty_comment)
+            (attribute_value))))
       (end_tag
         (tag_name)))
     (text)

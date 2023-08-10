@@ -119,11 +119,12 @@ unpaired 2 electric boogalloo
         (attribute
           (attribute_name)
           (quoted_attribute_value
-            (attribute_value
-              (smarty_interpolation
-                (smarty_filter_expression
-                  (smarty_string)
-                  (smarty_name)))))))
+            (attribute_value)
+            (smarty_interpolation
+              (smarty_filter_expression
+                (smarty_string)
+                (smarty_name)))
+            (attribute_value))))
       (end_tag
         (tag_name)))
     (text)

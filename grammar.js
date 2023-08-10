@@ -251,7 +251,7 @@ module.exports = grammar(html, {
     ),
 
     smarty_foreach_nodes: ($) => seq(
-      alias("{foreach", "foreach"),
+      prefixedKeyword("{", "foreach"),
       $.smarty_foreach_header,
       "}",
       repeat($._node),
@@ -261,7 +261,7 @@ module.exports = grammar(html, {
     ),
 
     smarty_function_definition: $ => seq(
-      alias("{function", "function"),
+      prefixedKeyword("{", "function"),
       field("function_name", $.smarty_name),
       field("arguments", repeat(seq(
         field("argument_name", $.smarty_name),
@@ -336,19 +336,19 @@ module.exports = grammar(html, {
       $.smarty_comment,
       $.smarty_interpolation,
       $.smarty_function_call,
-      /([^'{]|\{ )+/, // smarty ignores brackets followed by space
+      alias(/([^'{]|\{ )+/, $.attribute_value) // smarty ignores brackets followed by space
     ),
     _dq_attribute_value_fragment: $ => choice(
       $.smarty_if_attrval_dq,
       $.smarty_comment,
       $.smarty_interpolation,
       $.smarty_function_call,
-      /([^"{]|\{ )+/,
+      alias(/([^"{]|\{ )+/, $.attribute_value),
     ),
 
     quoted_attribute_value: $ => choice(
-      seq("'", optional(alias(repeat1($._sq_attribute_value_fragment), $.attribute_value)), optional("{"), "'"),
-      seq('"', optional(alias(repeat1($._dq_attribute_value_fragment), $.attribute_value)), optional("{"), '"'),
+      seq("'", repeat($._sq_attribute_value_fragment), optional("{"), "'"),
+      seq('"', repeat($._dq_attribute_value_fragment), optional("{"), '"'),
     ),
 
 
@@ -388,9 +388,7 @@ function smarty_name() {
 
 function if_with_body($, body, elseif, else_) {
   return seq(
-    // TODO: this currently highlights the entire "{if", not just the "if"
-    // getting too many conflicts if i try, so just to be sure
-    alias("{if", "if"),
+    prefixedKeyword("{", "if"),
     field('condition', $._smarty_if_condition),
     "}",
     field('body', body),
@@ -405,9 +403,7 @@ function if_with_body($, body, elseif, else_) {
 
 function elseif_with_body($, body) {
   return seq(
-    // TODO: this currently highlights the entire "{elseif", not just the "elseif"
-    // it gives me a conflict if i try
-    alias("{elseif", "elseif"),
+    prefixedKeyword("{", "elseif"),
     field('condition', $._smarty_if_condition),
     "}",
     field('body', body),
@@ -416,12 +412,23 @@ function elseif_with_body($, body) {
 
 function else_with_body($, body) {
   return seq(
-    // TODO: this currently highlights the entire "{else", not just the "else"
-    // it gives me a conflict if i try
-    alias("{else", "else"),
+    prefixedKeyword("{", "else"),
     "}",
     field('body', body),
   );
+}
+
+function prefixedKeyword(prefix, word, aliasAsWord = true) {
+  // TODO: this currently highlights the entire "{else", not just the "else"
+  // I would need eg. https://github.com/tree-sitter/tree-sitter/issues/1944 to fix this properly
+  // now I'm just using the nvim specific workaround
+  let pattern = ''
+  for (const letter of word) {
+    pattern += `[${letter}${letter.toLocaleUpperCase()}]`
+  }
+  let result = new RegExp(pattern)
+  if (aliasAsWord) result = alias(result, word)
+  return alias(token(seq(prefix, token.immediate(result))), word)
 }
 
 // taken from tree-sitter-php

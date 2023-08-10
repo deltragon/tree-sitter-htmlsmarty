@@ -32,13 +32,12 @@ function_call
         (attribute
           (attribute_name)
           (quoted_attribute_value
-            (attribute_value
-              (smarty_function_call
-                function_name: (smarty_name)
-                argument_name: (smarty_name)
-                argument_value: (smarty_string)
-                argument_name: (smarty_name)
-                argument_value: (smarty_string)))))
+            (smarty_function_call
+              function_name: (smarty_name)
+              argument_name: (smarty_name)
+              argument_value: (smarty_string)
+              argument_name: (smarty_name)
+              argument_value: (smarty_string))))
         (smarty_function_call
           function_name: (smarty_name)
           argument_name: (smarty_name)

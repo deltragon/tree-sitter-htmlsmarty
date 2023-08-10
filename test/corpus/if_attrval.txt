@@ -29,33 +29,37 @@ if_attrval
         (attribute
           (attribute_name)
           (quoted_attribute_value
-            (attribute_value
-              (smarty_if_attrval_dq
-                (smarty_variable_name
-                  (smarty_name))))))
+            (attribute_value)
+            (smarty_if_attrval_dq
+              condition: (smarty_variable_name
+                (smarty_name))
+              body: (attribute_value))))
         (attribute
           (attribute_name)
           (quoted_attribute_value
-            (attribute_value
-              (smarty_if_attrval_sq
-                (smarty_variable_name
-                  (smarty_name))))))
+            (attribute_value)
+            (smarty_if_attrval_sq
+              condition: (smarty_variable_name
+                (smarty_name))
+              body: (attribute_value))))
         (attribute
           (attribute_name)
           (quoted_attribute_value
-            (attribute_value
-              (smarty_if_attrval_sq
-                (smarty_variable_name
-                  (smarty_name))
-                (smarty_else_attrval_sq
-                  (smarty_comment))))))
+            (attribute_value)
+            (smarty_if_attrval_sq
+              condition: (smarty_variable_name
+                (smarty_name))
+              body: (attribute_value)
+              alternative: (smarty_else_attrval_sq
+                body: (smarty_comment)))))
         (attribute
           (attribute_name)
           (quoted_attribute_value
-            (attribute_value
-              (smarty_interpolation
-                (smarty_variable_name
-                  (smarty_name)))))))
+            (attribute_value)
+            (smarty_interpolation
+              (smarty_variable_name
+                (smarty_name)))
+            (attribute_value))))
       (text)
       (end_tag
         (tag_name)))

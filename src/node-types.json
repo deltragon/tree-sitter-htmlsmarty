@@ -30,33 +30,7 @@
   {
     "type": "attribute_value",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "smarty_comment",
-          "named": true
-        },
-        {
-          "type": "smarty_function_call",
-          "named": true
-        },
-        {
-          "type": "smarty_if_attrval_dq",
-          "named": true
-        },
-        {
-          "type": "smarty_if_attrval_sq",
-          "named": true
-        },
-        {
-          "type": "smarty_interpolation",
-          "named": true
-        }
-      ]
-    }
+    "fields": {}
   },
   {
     "type": "doctype",
@@ -236,11 +210,31 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
         {
           "type": "attribute_value",
+          "named": true
+        },
+        {
+          "type": "smarty_comment",
+          "named": true
+        },
+        {
+          "type": "smarty_function_call",
+          "named": true
+        },
+        {
+          "type": "smarty_if_attrval_dq",
+          "named": true
+        },
+        {
+          "type": "smarty_if_attrval_sq",
+          "named": true
+        },
+        {
+          "type": "smarty_interpolation",
           "named": true
         }
       ]
@@ -694,6 +688,10 @@
         "required": false,
         "types": [
           {
+            "type": "attribute_value",
+            "named": true
+          },
+          {
             "type": "smarty_comment",
             "named": true
           },
@@ -721,6 +719,10 @@
         "multiple": true,
         "required": false,
         "types": [
+          {
+            "type": "attribute_value",
+            "named": true
+          },
           {
             "type": "smarty_comment",
             "named": true
@@ -896,6 +898,10 @@
         "required": false,
         "types": [
           {
+            "type": "attribute_value",
+            "named": true
+          },
+          {
             "type": "smarty_comment",
             "named": true
           },
@@ -977,6 +983,10 @@
         "multiple": true,
         "required": false,
         "types": [
+          {
+            "type": "attribute_value",
+            "named": true
+          },
           {
             "type": "smarty_comment",
             "named": true
@@ -1902,6 +1912,10 @@
         "required": false,
         "types": [
           {
+            "type": "attribute_value",
+            "named": true
+          },
+          {
             "type": "smarty_comment",
             "named": true
           },
@@ -2003,6 +2017,10 @@
         "multiple": true,
         "required": false,
         "types": [
+          {
+            "type": "attribute_value",
+            "named": true
+          },
           {
             "type": "smarty_comment",
             "named": true
