@@ -22,14 +22,12 @@ binary expression
       (smarty_binary_expression
         (smarty_string)
         (smarty_string)))
-    (text)
     (smarty_if_nodes
       (smarty_binary_expression
         (smarty_variable_name
           (smarty_name))
         (smarty_string))
       (text))
-    (text)
     (smarty_if_nodes
       (smarty_binary_expression
         (smarty_variable_name

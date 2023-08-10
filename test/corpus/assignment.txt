@@ -30,7 +30,6 @@ assignment
         (smarty_name))
       (smarty_variable_name
         (smarty_name)))
-    (text)
     (smarty_assignment
       (smarty_member_access_expression
         (smarty_member_access_expression

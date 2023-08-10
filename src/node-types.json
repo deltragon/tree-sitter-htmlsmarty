@@ -23,6 +23,11 @@
     }
   },
   {
+    "type": "attribute_name",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "attribute_value",
     "named": true,
     "fields": {},
@@ -2629,10 +2634,6 @@
   {
     "type": "as",
     "named": false
-  },
-  {
-    "type": "attribute_name",
-    "named": true
   },
   {
     "type": "comment",

@@ -16,7 +16,6 @@ function_call
   (element
     (start_tag
       (tag_name))
-    (text)
     (smarty_function_call
       (smarty_name)
       (smarty_name)

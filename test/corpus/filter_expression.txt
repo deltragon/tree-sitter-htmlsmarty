@@ -24,7 +24,6 @@ literals
         (smarty_variable_name
           (smarty_name))
         (smarty_name)))
-    (text)
     (smarty_interpolation
       (smarty_filter_expression
         (smarty_string)

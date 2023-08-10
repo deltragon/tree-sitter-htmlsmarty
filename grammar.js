@@ -199,7 +199,8 @@ module.exports = grammar(html, {
 
     smarty_variable_name: $ => seq('$', $.smarty_name),
 
-    smarty_name: $ => /[_a-zA-Z\u00A1-\u00ff][_a-zA-Z\u00A1-\u00ff\d]*/,
+    smarty_name: $ => smarty_name(),
+    _smarty_name_immediate: $ => alias(token.immediate(smarty_name()), $.smarty_name),
 
     _smarty_if_condition: ($) => choice(
       $._smarty_expression,
@@ -276,7 +277,7 @@ module.exports = grammar(html, {
 
     smarty_function_call: $ => seq(
       "{",
-      field("function_name", $.smarty_name),
+      field("function_name", $._smarty_name_immediate),
       field("arguments", repeat(seq(
         field("argument_name", $.smarty_name),
         "=",
@@ -296,9 +297,10 @@ module.exports = grammar(html, {
     )),
 
     // in text
+    // disallow { followed by non-space char
     // FIXME: see comment in test/corpus/unpaired.txt for why this is broken in the edge case of
     // `text {<valid-tag/>`
-    text: $ => /([^<>{])+/,
+    text: $ => /([^<>{]|\{\s)+/,
 
     _node: $ => choice(
       $.doctype,
@@ -324,24 +326,24 @@ module.exports = grammar(html, {
       $.smarty_function_call,
     ),
 
-    attribute_name: $ => /[^<>"'/=\s{]+/, // disallow { in attribute names
+    attribute_name: $ => choice(/([^<>"'/=\s{]|\{\s)+/, "{"), // disallow { followed by non-space char
 
     // this is necessary as otherwise we get errors
-    attribute_value: $ => /[^<>"'=\s{]+/, // disallow { in unqoted attribute values
+    attribute_value: $ => choice(/([^<>"'=\s{]|\{\s)+/, "{"), // disallow { followed by non-space char
 
     _sq_attribute_value_fragment: $ => choice(
       $.smarty_if_attrval_sq,
       $.smarty_comment,
       $.smarty_interpolation,
       $.smarty_function_call,
-      /[^'{]+/, // i do not understand how I can allow {, and still give the other rules precedence...
+      /([^'{]|\{ )+/, // smarty ignores brackets followed by space
     ),
     _dq_attribute_value_fragment: $ => choice(
       $.smarty_if_attrval_dq,
       $.smarty_comment,
       $.smarty_interpolation,
       $.smarty_function_call,
-      /[^"{]+/,
+      /([^"{]|\{ )+/,
     ),
 
     quoted_attribute_value: $ => choice(
@@ -379,6 +381,10 @@ module.exports = grammar(html, {
     ),
   }
 });
+
+function smarty_name() {
+  return /[_a-zA-Z\u00A1-\u00ff][_a-zA-Z\u00A1-\u00ff\d]*/;
+}
 
 function if_with_body($, body, elseif, else_) {
   return seq(

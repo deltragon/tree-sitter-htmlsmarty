@@ -30,52 +30,42 @@ literals
       (smarty_variable_name
         (smarty_name))
       (smarty_integer))
-    (text)
     (smarty_assignment
       (smarty_variable_name
         (smarty_name))
       (smarty_float))
-    (text)
     (smarty_assignment
       (smarty_variable_name
         (smarty_name))
       (smarty_boolean))
-    (text)
     (smarty_assignment
       (smarty_variable_name
         (smarty_name))
       (smarty_boolean))
-    (text)
     (smarty_assignment
       (smarty_variable_name
         (smarty_name))
       (smarty_boolean))
-    (text)
     (smarty_assignment
       (smarty_variable_name
         (smarty_name))
       (smarty_boolean))
-    (text)
     (smarty_assignment
       (smarty_variable_name
         (smarty_name))
       (smarty_null))
-    (text)
     (smarty_assignment
       (smarty_variable_name
         (smarty_name))
       (smarty_null))
-    (text)
     (smarty_assignment
       (smarty_variable_name
         (smarty_name))
       (smarty_string))
-    (text)
     (smarty_assignment
       (smarty_variable_name
         (smarty_name))
       (smarty_string))
-    (text)
     (smarty_assignment
       (smarty_variable_name
         (smarty_name))

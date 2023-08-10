@@ -36,7 +36,6 @@ comment
     (comment)
     (text)
     (smarty_comment)
-    (text)
     (smarty_comment)
     (text)
     (smarty_comment)

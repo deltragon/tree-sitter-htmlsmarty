@@ -15,7 +15,6 @@ function definition
 --------------------------------------------------------------------------------
 
 (fragment
-  (text)
   (smarty_function_definition
     (smarty_name)
     (smarty_name)
@@ -24,18 +23,13 @@ function definition
     (element
       (start_tag
         (tag_name))
-      (text)
       (smarty_interpolation
         (smarty_variable_name
           (smarty_name)))
       (text)
       (end_tag
-        (tag_name)))
-    (text))
-  (text)
+        (tag_name))))
   (smarty_function_definition
     (smarty_name)
-    (text)
-    (smarty_comment)
-    (text))
+    (smarty_comment))
   (text))

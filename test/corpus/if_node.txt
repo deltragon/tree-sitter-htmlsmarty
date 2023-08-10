@@ -39,7 +39,6 @@ if_node
         (text)
         (end_tag
           (tag_name)))
-      (text)
       (smarty_elseif_nodes
         (smarty_variable_name
           (smarty_name))
@@ -47,7 +46,6 @@ if_node
       (smarty_elseif_nodes
         (smarty_variable_name
           (smarty_name))
-        (text)
         (smarty_if_nodes
           (smarty_variable_name
             (smarty_name))
@@ -55,7 +53,6 @@ if_node
           (element
             (self_closing_tag
               (tag_name)))
-          (text)
           (smarty_else_nodes
             (text)
             (element
@@ -63,9 +60,7 @@ if_node
                 (tag_name))
               (text)
               (end_tag
-                (tag_name)))
-            (text)))
-        (text)))
+                (tag_name)))))))
     (text)
     (end_tag
       (tag_name)))
