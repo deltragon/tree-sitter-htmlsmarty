@@ -17,14 +17,14 @@ function_call
     (start_tag
       (tag_name))
     (smarty_function_call
-      (smarty_name)
-      (smarty_name)
-      (smarty_integer)
-      (smarty_name)
-      (smarty_member_access_expression
+      function_name: (smarty_name)
+      argument_name: (smarty_name)
+      argument_value: (smarty_integer)
+      argument_name: (smarty_name)
+      argument_value: (smarty_member_access_expression
         (smarty_variable_name
           (smarty_name))
-        (smarty_name)))
+        name: (smarty_name)))
     (text)
     (element
       (start_tag
@@ -34,15 +34,15 @@ function_call
           (quoted_attribute_value
             (attribute_value
               (smarty_function_call
-                (smarty_name)
-                (smarty_name)
-                (smarty_string)
-                (smarty_name)
-                (smarty_string)))))
+                function_name: (smarty_name)
+                argument_name: (smarty_name)
+                argument_value: (smarty_string)
+                argument_name: (smarty_name)
+                argument_value: (smarty_string)))))
         (smarty_function_call
-          (smarty_name)
-          (smarty_name)
-          (smarty_string)))
+          function_name: (smarty_name)
+          argument_name: (smarty_name)
+          argument_value: (smarty_string)))
       (end_tag
         (tag_name)))
     (text)

@@ -18,16 +18,16 @@ literals
       (tag_name))
     (text)
     (smarty_assignment
-      (smarty_variable_name
+      left: (smarty_variable_name
         (smarty_name))
-      (smarty_filter_expression
-        (smarty_variable_name
+      right: (smarty_filter_expression
+        first_argument: (smarty_variable_name
           (smarty_name))
-        (smarty_name)))
+        filter_name: (smarty_name)))
     (smarty_interpolation
       (smarty_filter_expression
-        (smarty_string)
-        (smarty_name)))
+        first_argument: (smarty_string)
+        filter_name: (smarty_name)))
     (text)
     (end_tag
       (tag_name)))
