@@ -14,6 +14,7 @@ literals
     {$smarty_variable = NULL}
     {$smarty_variable = "asdfs"}
     {$smarty_variable = 'asdfs'}
+    {$smarty_variable = ['asdfs' => 1, $some_variable]}
     content
 </div>
 
@@ -74,6 +75,17 @@ literals
       (smarty_variable_name
         (smarty_name))
       (smarty_string))
+    (text)
+    (smarty_assignment
+      (smarty_variable_name
+        (smarty_name))
+      (smarty_array_literal
+        (smarty_array_element
+          (smarty_string)
+          (smarty_integer))
+        (smarty_array_element
+          (smarty_variable_name
+            (smarty_name)))))
     (text)
     (end_tag
       (tag_name)))

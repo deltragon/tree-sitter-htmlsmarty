@@ -123,6 +123,7 @@ module.exports = grammar(html, {
       $.smarty_float,
       $.smarty_boolean,
       $.smarty_null,
+      $.smarty_array_literal,
     ),
 
     smarty_member_access_expression: ($) => seq(
@@ -177,7 +178,23 @@ module.exports = grammar(html, {
         hex,
         binary
       ))
-  },
+    },
+
+    smarty_array_literal: $ => choice(
+      seq('array', '(', optional($._smarty_array_elements), ')'),
+      seq('[', optional($._smarty_array_elements), ']')
+    ),
+
+    _smarty_array_elements: $ => seq(
+      $.smarty_array_element,
+      repeat(seq(',', $.smarty_array_element)),
+      //optional(','), // smarty does not allow trailing commas currently
+    ),
+
+    smarty_array_element: $ => prec.right(choice(
+      $._smarty_expression,
+      seq($._smarty_expression, '=>', $._smarty_expression)
+    )),
 
     smarty_variable_name: $ => seq('$', $.smarty_name),
 
