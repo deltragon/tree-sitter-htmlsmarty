@@ -20,6 +20,9 @@ unpaired
         class="1"
         data-test="{"
         data-test-2={
+        data-test="asdf { asdf }"
+        data-test="{asdf "
+        data-test="{$asdf"
         ></div>
     <script>
         this is raw text now { heheh }
@@ -64,10 +67,19 @@ unpaired
             (attribute_value)))
         (attribute
           (attribute_name)
-          (quoted_attribute_value))
+          (quoted_attribute_value
+            (ERROR
+              (smarty_string)
+              (smarty_name))
+            (attribute_value)))
         (attribute
           (attribute_name)
-          (attribute_value)))
+          (quoted_attribute_value
+            (ERROR
+              (smarty_name)
+              (smarty_string)
+              (smarty_variable_name
+                (smarty_name))))))
       (end_tag
         (tag_name)))
     (text)
