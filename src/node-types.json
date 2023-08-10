@@ -316,6 +316,10 @@
           "named": true
         },
         {
+          "type": "smarty_filter_expression",
+          "named": true
+        },
+        {
           "type": "smarty_float",
           "named": true
         },
@@ -400,6 +404,10 @@
             "named": true
           },
           {
+            "type": "smarty_filter_expression",
+            "named": true
+          },
+          {
             "type": "smarty_float",
             "named": true
           },
@@ -453,6 +461,10 @@
           },
           {
             "type": "smarty_boolean",
+            "named": true
+          },
+          {
+            "type": "smarty_filter_expression",
             "named": true
           },
           {
@@ -593,6 +605,10 @@
           },
           {
             "type": "smarty_boolean",
+            "named": true
+          },
+          {
+            "type": "smarty_filter_expression",
             "named": true
           },
           {
@@ -827,6 +843,10 @@
             "named": true
           },
           {
+            "type": "smarty_filter_expression",
+            "named": true
+          },
+          {
             "type": "smarty_float",
             "named": true
           },
@@ -905,6 +925,10 @@
             "named": true
           },
           {
+            "type": "smarty_filter_expression",
+            "named": true
+          },
+          {
             "type": "smarty_float",
             "named": true
           },
@@ -980,6 +1004,10 @@
           },
           {
             "type": "smarty_boolean",
+            "named": true
+          },
+          {
+            "type": "smarty_filter_expression",
             "named": true
           },
           {
@@ -1097,6 +1125,192 @@
             "named": true
           },
           {
+            "type": "smarty_filter_expression",
+            "named": true
+          },
+          {
+            "type": "smarty_float",
+            "named": true
+          },
+          {
+            "type": "smarty_integer",
+            "named": true
+          },
+          {
+            "type": "smarty_member_access_expression",
+            "named": true
+          },
+          {
+            "type": "smarty_null",
+            "named": true
+          },
+          {
+            "type": "smarty_parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "smarty_string",
+            "named": true
+          },
+          {
+            "type": "smarty_unary_op_expression",
+            "named": true
+          },
+          {
+            "type": "smarty_variable_name",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "smarty_filter_expression",
+    "named": true,
+    "fields": {
+      "argument_value": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "smarty_array_literal",
+            "named": true
+          },
+          {
+            "type": "smarty_binary_expression",
+            "named": true
+          },
+          {
+            "type": "smarty_boolean",
+            "named": true
+          },
+          {
+            "type": "smarty_filter_expression",
+            "named": true
+          },
+          {
+            "type": "smarty_float",
+            "named": true
+          },
+          {
+            "type": "smarty_integer",
+            "named": true
+          },
+          {
+            "type": "smarty_member_access_expression",
+            "named": true
+          },
+          {
+            "type": "smarty_null",
+            "named": true
+          },
+          {
+            "type": "smarty_parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "smarty_string",
+            "named": true
+          },
+          {
+            "type": "smarty_unary_op_expression",
+            "named": true
+          },
+          {
+            "type": "smarty_variable_name",
+            "named": true
+          }
+        ]
+      },
+      "arguments": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": ":",
+            "named": false
+          },
+          {
+            "type": "smarty_array_literal",
+            "named": true
+          },
+          {
+            "type": "smarty_binary_expression",
+            "named": true
+          },
+          {
+            "type": "smarty_boolean",
+            "named": true
+          },
+          {
+            "type": "smarty_filter_expression",
+            "named": true
+          },
+          {
+            "type": "smarty_float",
+            "named": true
+          },
+          {
+            "type": "smarty_integer",
+            "named": true
+          },
+          {
+            "type": "smarty_member_access_expression",
+            "named": true
+          },
+          {
+            "type": "smarty_null",
+            "named": true
+          },
+          {
+            "type": "smarty_parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "smarty_string",
+            "named": true
+          },
+          {
+            "type": "smarty_unary_op_expression",
+            "named": true
+          },
+          {
+            "type": "smarty_variable_name",
+            "named": true
+          }
+        ]
+      },
+      "filter_name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "smarty_name",
+            "named": true
+          }
+        ]
+      },
+      "first_argument": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "smarty_array_literal",
+            "named": true
+          },
+          {
+            "type": "smarty_binary_expression",
+            "named": true
+          },
+          {
+            "type": "smarty_boolean",
+            "named": true
+          },
+          {
+            "type": "smarty_filter_expression",
+            "named": true
+          },
+          {
             "type": "smarty_float",
             "named": true
           },
@@ -1150,6 +1364,10 @@
         },
         {
           "type": "smarty_boolean",
+          "named": true
+        },
+        {
+          "type": "smarty_filter_expression",
           "named": true
         },
         {
@@ -1285,6 +1503,10 @@
             "named": true
           },
           {
+            "type": "smarty_filter_expression",
+            "named": true
+          },
+          {
             "type": "smarty_float",
             "named": true
           },
@@ -1336,6 +1558,10 @@
           },
           {
             "type": "smarty_boolean",
+            "named": true
+          },
+          {
+            "type": "smarty_filter_expression",
             "named": true
           },
           {
@@ -1603,6 +1829,10 @@
             "named": true
           },
           {
+            "type": "smarty_filter_expression",
+            "named": true
+          },
+          {
             "type": "smarty_float",
             "named": true
           },
@@ -1701,6 +1931,10 @@
             "named": true
           },
           {
+            "type": "smarty_filter_expression",
+            "named": true
+          },
+          {
             "type": "smarty_float",
             "named": true
           },
@@ -1796,6 +2030,10 @@
           },
           {
             "type": "smarty_boolean",
+            "named": true
+          },
+          {
+            "type": "smarty_filter_expression",
             "named": true
           },
           {
@@ -1933,6 +2171,10 @@
             "named": true
           },
           {
+            "type": "smarty_filter_expression",
+            "named": true
+          },
+          {
             "type": "smarty_float",
             "named": true
           },
@@ -1986,6 +2228,10 @@
         },
         {
           "type": "smarty_boolean",
+          "named": true
+        },
+        {
+          "type": "smarty_filter_expression",
           "named": true
         },
         {
@@ -2074,6 +2320,10 @@
           "named": true
         },
         {
+          "type": "smarty_filter_expression",
+          "named": true
+        },
+        {
           "type": "smarty_float",
           "named": true
         },
@@ -2126,6 +2376,10 @@
         },
         {
           "type": "smarty_boolean",
+          "named": true
+        },
+        {
+          "type": "smarty_filter_expression",
           "named": true
         },
         {
@@ -2305,6 +2559,10 @@
     "named": false
   },
   {
+    "type": ":",
+    "named": false
+  },
+  {
     "type": "<",
     "named": false
   },
@@ -2462,6 +2720,10 @@
   },
   {
     "type": "{/",
+    "named": false
+  },
+  {
+    "type": "|",
     "named": false
   },
   {

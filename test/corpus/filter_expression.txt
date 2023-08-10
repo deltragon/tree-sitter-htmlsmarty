@@ -1,0 +1,35 @@
+================================================================================
+literals
+================================================================================
+
+<div>
+    content
+    {$smarty_variable = $filter_expression|filter_name}
+    {"some string"|strtoupper}
+    content
+</div>
+
+--------------------------------------------------------------------------------
+
+(fragment
+  (text)
+  (element
+    (start_tag
+      (tag_name))
+    (text)
+    (smarty_assignment
+      (smarty_variable_name
+        (smarty_name))
+      (smarty_filter_expression
+        (smarty_variable_name
+          (smarty_name))
+        (smarty_name)))
+    (text)
+    (smarty_interpolation
+      (smarty_filter_expression
+        (smarty_string)
+        (smarty_name)))
+    (text)
+    (end_tag
+      (tag_name)))
+  (text))

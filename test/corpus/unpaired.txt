@@ -51,7 +51,8 @@ unpaired
         (smarty_name)
         (ERROR
           (smarty_name)
-          (UNEXPECTED 'c')))
+          (smarty_name)
+          (UNEXPECTED '?')))
       (text)
       (end_tag
         (tag_name)))

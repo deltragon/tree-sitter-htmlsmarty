@@ -53,6 +53,7 @@ module.exports = grammar(html, {
       $.smarty_binary_expression,
       $.smarty_unary_op_expression,
       $.smarty_parenthesized_expression,
+      $.smarty_filter_expression,
     ),
 
     _smarty_primary_expression: $ => choice(
@@ -283,6 +284,16 @@ module.exports = grammar(html, {
       ))),
       "}"
     ),
+
+    smarty_filter_expression: $ => prec.left(seq(
+      field("first_argument", $._smarty_expression),
+      "|",
+      field("filter_name", $.smarty_name),
+      field("arguments", repeat(prec.left(seq(
+        ":",
+        field("argument_value", $._smarty_expression),
+      )))),
+    )),
 
     // in text
     // FIXME: see comment in test/corpus/unpaired.txt for why this is broken in the edge case of

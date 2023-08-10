@@ -529,6 +529,10 @@
         {
           "type": "SYMBOL",
           "name": "smarty_parenthesized_expression"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "smarty_filter_expression"
         }
       ]
     },
@@ -2445,6 +2449,63 @@
           "value": "}"
         }
       ]
+    },
+    "smarty_filter_expression": {
+      "type": "PREC_LEFT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "FIELD",
+            "name": "first_argument",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_smarty_expression"
+            }
+          },
+          {
+            "type": "STRING",
+            "value": "|"
+          },
+          {
+            "type": "FIELD",
+            "name": "filter_name",
+            "content": {
+              "type": "SYMBOL",
+              "name": "smarty_name"
+            }
+          },
+          {
+            "type": "FIELD",
+            "name": "arguments",
+            "content": {
+              "type": "REPEAT",
+              "content": {
+                "type": "PREC_LEFT",
+                "value": 0,
+                "content": {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": ":"
+                    },
+                    {
+                      "type": "FIELD",
+                      "name": "argument_value",
+                      "content": {
+                        "type": "SYMBOL",
+                        "name": "_smarty_expression"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
     },
     "_attribute": {
       "type": "CHOICE",
