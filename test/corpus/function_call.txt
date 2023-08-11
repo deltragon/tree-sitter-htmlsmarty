@@ -58,6 +58,11 @@ function call expression
         {do_something($y, $z)}
     {/if}
     content
+
+    <div
+        {function_call('in-attribute')}
+        >
+    </div>
 </div>
 
 --------------------------------------------------------------------------------
@@ -79,6 +84,16 @@ function call expression
           (smarty_name))
         arguments: (smarty_variable_name
           (smarty_name))))
+    (text)
+    (element
+      (start_tag
+        (tag_name)
+        (smarty_function_call
+          function_name: (smarty_name)
+          arguments: (smarty_string)))
+      (text)
+      (end_tag
+        (tag_name)))
     (text)
     (end_tag
       (tag_name)))

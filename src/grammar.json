@@ -393,10 +393,6 @@
         {
           "type": "PATTERN",
           "value": "([^<>\"'/=\\s{]|\\{\\s)+"
-        },
-        {
-          "type": "STRING",
-          "value": "{"
         }
       ]
     },

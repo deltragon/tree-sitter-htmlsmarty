@@ -352,7 +352,7 @@ module.exports = grammar(html, {
       $.smarty_function_call,
     ),
 
-    attribute_name: $ => choice(/([^<>"'/=\s{]|\{\s)+/, "{"), // disallow { followed by non-space char
+    attribute_name: $ => choice(/([^<>"'/=\s{]|\{\s)+/), // disallow { followed by non-space char
 
     // this is necessary as otherwise we get errors
     attribute_value: $ => choice(/([^<>"'=\s{]|\{\s)+/, "{"), // disallow { followed by non-space char
