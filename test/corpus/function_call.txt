@@ -48,3 +48,38 @@ function_call
     (end_tag
       (tag_name)))
   (text))
+
+================================================================================
+function call expression
+================================================================================
+<div>
+    content
+    {if !empty($x)}
+        {do_something($y, $z)}
+    {/if}
+    content
+</div>
+
+--------------------------------------------------------------------------------
+
+(fragment
+  (element
+    (start_tag
+      (tag_name))
+    (text)
+    (smarty_if_nodes
+      condition: (smarty_unary_op_expression
+        (smarty_function_call_expression
+          function_name: (smarty_name)
+          arguments: (smarty_variable_name
+            (smarty_name))))
+      body: (smarty_function_call
+        function_name: (smarty_name)
+        arguments: (smarty_variable_name
+          (smarty_name))
+        arguments: (smarty_variable_name
+          (smarty_name))))
+    (text)
+    (end_tag
+      (tag_name)))
+  (text))

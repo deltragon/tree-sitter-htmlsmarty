@@ -49,16 +49,17 @@ module.exports = grammar(html, {
     ),
 
     _smarty_expression: ($) => choice(
-      $._smarty_primary_expression,
+      $._smarty_interpolation_expression,
+      $.smarty_function_call_expression,
+    ),
+
+    _smarty_interpolation_expression: ($) => choice(
+      $._smarty_variable,
+      $._smarty_literal,
       $.smarty_binary_expression,
       $.smarty_unary_op_expression,
       $.smarty_parenthesized_expression,
       $.smarty_filter_expression,
-    ),
-
-    _smarty_primary_expression: $ => choice(
-      $._smarty_variable,
-      $._smarty_literal,
     ),
 
     // taken from tree-sitter-php
@@ -137,7 +138,7 @@ module.exports = grammar(html, {
 
     smarty_interpolation: ($) => seq(
       '{',
-      $._smarty_expression,
+      $._smarty_interpolation_expression,
       '}'
     ),
 
@@ -278,11 +279,26 @@ module.exports = grammar(html, {
     smarty_function_call: $ => seq(
       "{",
       field("function_name", $._smarty_name_immediate),
-      field("arguments", repeat(seq(
-        field("argument_name", $.smarty_name),
-        "=",
-        field("argument_value", $._smarty_expression),
-      ))),
+      field("arguments", choice(
+        repeat(seq(
+          field("argument_name", $.smarty_name),
+          "=",
+          field("argument_value", $._smarty_expression),
+        )),
+        // {function_name($argument)}
+        // we do not support {function_name($argument) + 1}
+        // in theory, this could (should?) be smarty_interpolation + smarty_function_call_expression
+        // however, then we get errors, because it conflicts with this...
+        // so i guess ill live with the slight inconsistency
+        seq(
+          '(',
+          optional(field('arguments', seq(
+            $._smarty_expression,
+            repeat(seq(',', $._smarty_expression)),
+          ))),
+          ')'
+        ),
+      )),
       "}"
     ),
 
@@ -295,6 +311,16 @@ module.exports = grammar(html, {
         field("argument_value", $._smarty_expression),
       )))),
     )),
+
+    smarty_function_call_expression: $ => seq(
+      field("function_name", $.smarty_name),
+      '(',
+      optional(field('arguments', seq(
+        $._smarty_expression,
+        repeat(seq(',', $._smarty_expression)),
+      ))),
+      ')'
+    ),
 
     // in text
     // disallow { followed by non-space char
