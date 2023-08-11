@@ -29,6 +29,8 @@
   )
 )
 
+(smarty_foreach_nodes ["{/" "}"] @punctuation.special)
+
 (smarty_if_nodes ["{/" "}"] @punctuation.special)
 (smarty_if_nodes alternative_condition: (smarty_elseif_nodes ("}" @punctuation.special)))
 (smarty_if_nodes alternative: (smarty_else_nodes ("}" @punctuation.special)))
@@ -68,30 +70,30 @@
 ; #offset! is nvim-treesitter specific, see https://neovim.io/doc/user/treesitter.html#treesitter-directive-offset%21
 (
  ("if" @punctuation.special.if_start)
- (#eq? @punctuation.special.if_start "{if")
+ (#lua-match? @punctuation.special.if_start "^%s*{if")
  (#offset! @punctuation.special.if_start 0 0 0 -2)
 )
 
 (
  ("else" @punctuation.special.else_start)
- (#eq? @punctuation.special.else_start "{else")
+ (#lua-match? @punctuation.special.else_start "^%s*{else")
  (#offset! @punctuation.special.else_start 0 0 0 -4)
 )
 
 (
  ("elseif" @punctuation.special.elseif_start)
- (#eq? @punctuation.special.elseif_start "{elseif")
+ (#lua-match? @punctuation.special.elseif_start "^%s*{elseif")
  (#offset! @punctuation.special.elseif_start 0 0 0 -6)
 )
 
 (
  ("function" @punctuation.special.function_start)
- (#eq? @punctuation.special.function_start "{function")
+ (#lua-match? @punctuation.special.function_start "^%s*{function")
  (#offset! @punctuation.special.function_start 0 0 0 -8)
 )
 
 (
  ("foreach" @punctuation.special.foreach_start)
- (#eq? @punctuation.special.foreach_start "{foreach")
+ (#lua-match? @punctuation.special.foreach_start "^%s*{foreach")
  (#offset! @punctuation.special.foreach_start 0 0 0 -7)
 )
