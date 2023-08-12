@@ -130,8 +130,17 @@ module.exports = grammar(html, {
 
     smarty_member_access_expression: ($) => seq(
       $._smarty_variable,
-      '.',
-      $._smarty_member_name,
+      choice(
+        seq(
+          '.',
+          $._smarty_member_name,
+        ),
+        seq(
+          '[',
+            $._smarty_expression,
+          ']'
+        )
+      )
     ),
 
     _smarty_member_name: ($) => field('name', $.smarty_name),

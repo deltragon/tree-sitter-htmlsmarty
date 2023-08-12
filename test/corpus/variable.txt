@@ -38,3 +38,48 @@ variable
     (end_tag
       (tag_name)))
   (text))
+
+================================================================================
+member access subscript
+================================================================================
+
+<div>
+    content
+    {$smarty_variable['string literal']}
+    content
+    {$smarty_object[1][2][3].test.nested['string']}
+</div>
+
+--------------------------------------------------------------------------------
+
+(fragment
+  (text)
+  (element
+    (start_tag
+      (tag_name))
+    (text)
+    (smarty_interpolation
+      (smarty_member_access_expression
+        (smarty_variable_name
+          (smarty_name))
+        (smarty_string)))
+    (text)
+    (smarty_interpolation
+      (smarty_member_access_expression
+        (smarty_member_access_expression
+          (smarty_member_access_expression
+            (smarty_member_access_expression
+              (smarty_member_access_expression
+                (smarty_member_access_expression
+                  (smarty_variable_name
+                    (smarty_name))
+                  (smarty_integer))
+                (smarty_integer))
+              (smarty_integer))
+            (smarty_name))
+          (smarty_name))
+        (smarty_string)))
+    (text)
+    (end_tag
+      (tag_name)))
+  (text))
