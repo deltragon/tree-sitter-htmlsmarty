@@ -68,17 +68,15 @@ unpaired
         (attribute
           (attribute_name)
           (quoted_attribute_value
-            (smarty_interpolation
+            (ERROR
               (smarty_string)
+              (smarty_name)
               (ERROR
                 (smarty_name)
-                (smarty_name)))))
-        (attribute
-          (attribute_name)
-          (quoted_attribute_value
-            (ERROR
-              (smarty_name)
-              (smarty_string)
+                (smarty_string))
+              (ERROR
+                (smarty_name)
+                (smarty_string))
               (smarty_variable_name
                 (smarty_name))))))
       (end_tag

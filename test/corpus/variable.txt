@@ -85,7 +85,7 @@ member access subscript
   (text))
 
 ================================================================================
-inline interpolation
+inline interpolation function call
 ================================================================================
 
 <div>
@@ -122,6 +122,65 @@ inline interpolation
       argument_name: (smarty_name)
       argument_value: (smarty_function_call
         function_name: (smarty_name)))
+    (text)
+    (end_tag
+      (tag_name)))
+  (text))
+
+================================================================================
+inline interpolation interpolation
+================================================================================
+
+<div>
+    content
+    {$x = {$x.id}}
+    {$x = {'string'}}
+    {$x = {{'string'}}}
+
+    yes this is valid, and equal to {$x}:
+    {{{{{$x}}}}}
+    content
+</div>
+
+--------------------------------------------------------------------------------
+
+(fragment
+  (text)
+  (element
+    (start_tag
+      (tag_name))
+    (text)
+    (smarty_assignment
+      left: (smarty_variable_name
+        (smarty_name))
+      right: (smarty_interpolation
+        (smarty_member_access_expression
+          (smarty_variable_name
+            (smarty_name))
+          name: (smarty_name))))
+    (smarty_assignment
+      left: (smarty_variable_name
+        (smarty_name))
+      right: (smarty_interpolation
+        (smarty_string)))
+    (smarty_assignment
+      left: (smarty_variable_name
+        (smarty_name))
+      right: (smarty_interpolation
+        (smarty_interpolation
+          (smarty_string))))
+    (text)
+    (smarty_interpolation
+      (smarty_variable_name
+        (smarty_name)))
+    (text)
+    (smarty_interpolation
+      (smarty_interpolation
+        (smarty_interpolation
+          (smarty_interpolation
+            (smarty_interpolation
+              (smarty_variable_name
+                (smarty_name)))))))
     (text)
     (end_tag
       (tag_name)))

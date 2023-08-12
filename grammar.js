@@ -51,13 +51,13 @@ module.exports = grammar(html, {
     _smarty_expression: ($) => choice(
       $._smarty_interpolation_expression,
       $.smarty_function_call_expression,
-      $._smarty_inline_interpolation,
     ),
 
     // these are statements allowed in expression position
     // eg. {$x = {inline_interpolation_function_call x=$y}}
     _smarty_inline_interpolation: ($) => choice(
       $.smarty_function_call,
+      $.smarty_interpolation, // on one hand, why would you do that - on the other hand, this is being used
     ),
 
     // these are expressions directly allowed inside a smarty_interpolation
@@ -68,6 +68,7 @@ module.exports = grammar(html, {
       $.smarty_unary_op_expression,
       $.smarty_parenthesized_expression,
       $.smarty_filter_expression,
+      $._smarty_inline_interpolation,
     ),
 
     // taken from tree-sitter-php

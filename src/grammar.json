@@ -509,10 +509,6 @@
         {
           "type": "SYMBOL",
           "name": "smarty_function_call_expression"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_smarty_inline_interpolation"
         }
       ]
     },
@@ -522,6 +518,10 @@
         {
           "type": "SYMBOL",
           "name": "smarty_function_call"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "smarty_interpolation"
         }
       ]
     },
@@ -551,6 +551,10 @@
         {
           "type": "SYMBOL",
           "name": "smarty_filter_expression"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_smarty_inline_interpolation"
         }
       ]
     },
