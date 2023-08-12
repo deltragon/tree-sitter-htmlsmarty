@@ -8,11 +8,42 @@
 (smarty_float) @number
 (smarty_boolean) @constant.builtin
 (smarty_null) @constant.builtin
+(smarty_array_literal ["[" "]"] @punctuation.bracket)
+(smarty_array_literal [","] @punctuation.delimiter)
+(smarty_array_literal (smarty_array_element "=>" @punctuation.delimiter))
 
 (smarty_member_access_expression name: (smarty_name) @property)
-(smarty_member_access_expression "." @punctuation.special)
+(smarty_member_access_expression "." @punctuation.delimiter)
+(smarty_member_access_expression ["[" "]"] @punctuation.bracket)
 (smarty_filter_expression filter_name: (smarty_name) @function.call)
+(smarty_filter_expression "|" @operator)
 (smarty_function_call_expression function_name: (smarty_name) @function.call)
+
+(smarty_binary_expression
+  operator: [
+    "and"
+    "or"
+    "xor"
+    "||"
+    "&&"
+    "^"
+    "&"
+    "=="
+    "!="
+    "<>"
+    "==="
+    "!=="
+    "<"
+    ">"
+    "<="
+    ">="
+    "+"
+    "-"
+    "*"
+    "/"
+    "%"
+  ] @operator
+)
 
 ; "statements"
 (smarty_function_call) @embedded
@@ -47,6 +78,7 @@
 (smarty_if_attrval_dq alternative: (smarty_else_attrval_dq ("}" @punctuation.special)))
 
 (smarty_foreach_nodes ["{/" "}"] @punctuation.special)
+(smarty_foreach_nodes (smarty_foreach_header "as" @keyword))
 
 (attribute_value) @string
 
@@ -54,7 +86,6 @@
 "elseif" @keyword
 "else" @keyword
 "foreach" @keyword
-"as" @keyword
 "function" @keyword
 
 ; #eq? is builtin to treesitter (or at least mentioned by the docs),
