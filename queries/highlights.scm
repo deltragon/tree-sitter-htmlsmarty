@@ -78,7 +78,8 @@
 (smarty_if_attrval_dq alternative: (smarty_else_attrval_dq ("}" @punctuation.special)))
 
 (smarty_foreach_nodes ["{/" "}"] @punctuation.special)
-(smarty_foreach_nodes (smarty_foreach_header "as" @keyword))
+(smarty_foreach_nodes "as" @keyword)
+(smarty_foreach_nodes "=>" @punctuation.delimiter)
 
 (attribute_value) @string
 

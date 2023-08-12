@@ -9,6 +9,11 @@ foreach_nodes
         {$variable}
     </span>
     {/foreach}
+    {foreach $test_variable.some_attr as $key => $variable}
+    <span>
+        {$key}: {$variable}
+    </span>
+    {/foreach}
     content
 </div>
 
@@ -21,13 +26,78 @@ foreach_nodes
       (tag_name))
     (text)
     (smarty_foreach_nodes
-      (smarty_foreach_header
-        (smarty_member_access_expression
-          (smarty_variable_name
-            (smarty_name))
-          (smarty_name))
+      from: (smarty_member_access_expression
         (smarty_variable_name
-          (smarty_name)))
+          (smarty_name))
+        name: (smarty_name))
+      item: (smarty_variable_name
+        (smarty_name))
+      (text)
+      (element
+        (start_tag
+          (tag_name))
+        (smarty_interpolation
+          (smarty_variable_name
+            (smarty_name)))
+        (text)
+        (end_tag
+          (tag_name))))
+    (smarty_foreach_nodes
+      from: (smarty_member_access_expression
+        (smarty_variable_name
+          (smarty_name))
+        name: (smarty_name))
+      key: (smarty_variable_name
+        (smarty_name))
+      item: (smarty_variable_name
+        (smarty_name))
+      (text)
+      (element
+        (start_tag
+          (tag_name))
+        (smarty_interpolation
+          (smarty_variable_name
+            (smarty_name)))
+        (text)
+        (smarty_interpolation
+          (smarty_variable_name
+            (smarty_name)))
+        (text)
+        (end_tag
+          (tag_name))))
+    (text)
+    (end_tag
+      (tag_name)))
+  (text))
+
+================================================================================
+foreach_nodes legacy
+================================================================================
+
+<div>
+    content
+    {foreach name = "some_list" item = "variable" key = "key" from = $somewhere}
+    <span>
+        {$variable}
+    </span>
+    {/foreach}
+    content
+</div>
+
+--------------------------------------------------------------------------------
+
+(fragment
+  (text)
+  (element
+    (start_tag
+      (tag_name))
+    (text)
+    (smarty_foreach_nodes
+      (smarty_string)
+      item: (smarty_string)
+      key: (smarty_string)
+      from: (smarty_variable_name
+        (smarty_name))
       (text)
       (element
         (start_tag

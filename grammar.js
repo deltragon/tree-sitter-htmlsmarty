@@ -266,17 +266,44 @@ module.exports = grammar(html, {
     smarty_elseif_attrval_dq: ($) => elseif_with_body($, repeat($._dq_attribute_value_fragment)),
     smarty_else_attrval_dq: ($) => else_with_body($, repeat($._dq_attribute_value_fragment)),
 
-    smarty_foreach_header: $ => choice(
-      seq(
-        $._smarty_expression,
-        keyword("as"),
-        $.smarty_variable_name
-      ),
-    ),
 
     smarty_foreach_nodes: ($) => seq(
       prefixedKeyword("{", "foreach"),
-      $.smarty_foreach_header,
+      choice(
+        // new header
+        seq(
+          field('from', $._smarty_expression),
+          keyword("as"),
+          optional(seq(
+            field('key', $.smarty_variable_name),
+            '=>',
+          )),
+          field('item', $.smarty_variable_name)
+        ),
+        // legacy header
+        repeat(choice(
+          seq(
+            "from",
+            "=",
+            field('from', $._smarty_expression),
+          ),
+          seq(
+            "name",
+            "=",
+            $.smarty_string,
+          ),
+          seq(
+            "item",
+            "=",
+            field('item', $.smarty_string),
+          ),
+          seq(
+            "key",
+            "=",
+            field('key', $.smarty_string),
+          ),
+        )),
+      ),
       "}",
       repeat($._node),
       "{/",

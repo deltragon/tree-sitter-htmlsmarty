@@ -2526,33 +2526,6 @@
         }
       ]
     },
-    "smarty_foreach_header": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "_smarty_expression"
-            },
-            {
-              "type": "ALIAS",
-              "content": {
-                "type": "PATTERN",
-                "value": "[aA][sS]"
-              },
-              "named": false,
-              "value": "as"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "smarty_variable_name"
-            }
-          ]
-        }
-      ]
-    },
     "smarty_foreach_nodes": {
       "type": "SEQ",
       "members": [
@@ -2586,8 +2559,152 @@
           "value": "foreach"
         },
         {
-          "type": "SYMBOL",
-          "name": "smarty_foreach_header"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "FIELD",
+                  "name": "from",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_smarty_expression"
+                  }
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "PATTERN",
+                    "value": "[aA][sS]"
+                  },
+                  "named": false,
+                  "value": "as"
+                },
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SEQ",
+                      "members": [
+                        {
+                          "type": "FIELD",
+                          "name": "key",
+                          "content": {
+                            "type": "SYMBOL",
+                            "name": "smarty_variable_name"
+                          }
+                        },
+                        {
+                          "type": "STRING",
+                          "value": "=>"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                },
+                {
+                  "type": "FIELD",
+                  "name": "item",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "smarty_variable_name"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "STRING",
+                        "value": "from"
+                      },
+                      {
+                        "type": "STRING",
+                        "value": "="
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "from",
+                        "content": {
+                          "type": "SYMBOL",
+                          "name": "_smarty_expression"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "STRING",
+                        "value": "name"
+                      },
+                      {
+                        "type": "STRING",
+                        "value": "="
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "smarty_string"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "STRING",
+                        "value": "item"
+                      },
+                      {
+                        "type": "STRING",
+                        "value": "="
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "item",
+                        "content": {
+                          "type": "SYMBOL",
+                          "name": "smarty_string"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "SEQ",
+                    "members": [
+                      {
+                        "type": "STRING",
+                        "value": "key"
+                      },
+                      {
+                        "type": "STRING",
+                        "value": "="
+                      },
+                      {
+                        "type": "FIELD",
+                        "name": "key",
+                        "content": {
+                          "type": "SYMBOL",
+                          "name": "smarty_string"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
         },
         {
           "type": "STRING",
