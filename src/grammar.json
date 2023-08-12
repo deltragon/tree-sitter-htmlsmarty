@@ -509,6 +509,19 @@
         {
           "type": "SYMBOL",
           "name": "smarty_function_call_expression"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_smarty_inline_interpolation"
+        }
+      ]
+    },
+    "_smarty_inline_interpolation": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "smarty_function_call"
         }
       ]
     },

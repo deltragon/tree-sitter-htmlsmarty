@@ -51,8 +51,16 @@ module.exports = grammar(html, {
     _smarty_expression: ($) => choice(
       $._smarty_interpolation_expression,
       $.smarty_function_call_expression,
+      $._smarty_inline_interpolation,
     ),
 
+    // these are statements allowed in expression position
+    // eg. {$x = {inline_interpolation_function_call x=$y}}
+    _smarty_inline_interpolation: ($) => choice(
+      $.smarty_function_call,
+    ),
+
+    // these are expressions directly allowed inside a smarty_interpolation
     _smarty_interpolation_expression: ($) => choice(
       $._smarty_variable,
       $._smarty_literal,

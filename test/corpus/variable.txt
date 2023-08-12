@@ -83,3 +83,46 @@ member access subscript
     (end_tag
       (tag_name)))
   (text))
+
+================================================================================
+inline interpolation
+================================================================================
+
+<div>
+    content
+    {$x = {inline_function_call x=$y}}
+    {$x = {inline_function_call_no_args}}
+    {outer_function_call arg={inner_function_call}}
+    content
+</div>
+
+--------------------------------------------------------------------------------
+
+(fragment
+  (text)
+  (element
+    (start_tag
+      (tag_name))
+    (text)
+    (smarty_assignment
+      left: (smarty_variable_name
+        (smarty_name))
+      right: (smarty_function_call
+        function_name: (smarty_name)
+        argument_name: (smarty_name)
+        argument_value: (smarty_variable_name
+          (smarty_name))))
+    (smarty_assignment
+      left: (smarty_variable_name
+        (smarty_name))
+      right: (smarty_function_call
+        function_name: (smarty_name)))
+    (smarty_function_call
+      function_name: (smarty_name)
+      argument_name: (smarty_name)
+      argument_value: (smarty_function_call
+        function_name: (smarty_name)))
+    (text)
+    (end_tag
+      (tag_name)))
+  (text))
