@@ -168,6 +168,11 @@ module.exports = grammar(html, {
       '}'
     ),
 
+    // TODO: smarty allows both string interpolation "string $var string"
+    // (also with a backtick syntax "string `$var.member` string")
+    // as well as embedded smarty tags "string {smarty_function_call} string"
+    // see https://www.smarty.net/docsv2/en/language.syntax.quotes.tpl and https://smarty-php.github.io/smarty/5.x/designers/language-basic-syntax/language-syntax-quotes/
+    // both php and js need external scanners for that...
     smarty_string: $ => token(choice(
       seq(
         "'",
