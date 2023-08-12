@@ -8,6 +8,8 @@ foreach_nodes
     <span>
         {$variable}
     </span>
+    {foreachelse}
+        fallback
     {/foreach}
     {foreach $test_variable.some_attr as $key => $variable}
     <span>
@@ -41,7 +43,9 @@ foreach_nodes
             (smarty_name)))
         (text)
         (end_tag
-          (tag_name))))
+          (tag_name)))
+      alternative: (smarty_foreachelse_nodes
+        body: (text)))
     (smarty_foreach_nodes
       from: (smarty_member_access_expression
         (smarty_variable_name

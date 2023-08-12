@@ -306,9 +306,16 @@ module.exports = grammar(html, {
       ),
       "}",
       repeat($._node),
+      field('alternative', optional($.smarty_foreachelse_nodes)),
       "{/",
       keyword("foreach"),
       "}"
+    ),
+
+    smarty_foreachelse_nodes: ($) => seq(
+      prefixedKeyword("{", "foreachelse"),
+      "}",
+      field('body', repeat($._node)),
     ),
 
     smarty_function_definition: $ => seq(

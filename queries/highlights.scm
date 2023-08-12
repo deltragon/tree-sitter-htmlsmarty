@@ -78,6 +78,7 @@
 (smarty_if_attrval_dq alternative: (smarty_else_attrval_dq ("}" @punctuation.special)))
 
 (smarty_foreach_nodes ["{/" "}"] @punctuation.special)
+(smarty_foreach_nodes alternative: (smarty_foreachelse_nodes ("}" @punctuation.special)))
 (smarty_foreach_nodes "as" @keyword)
 (smarty_foreach_nodes "=>" @punctuation.delimiter)
 
@@ -87,6 +88,7 @@
 "elseif" @keyword
 "else" @keyword
 "foreach" @keyword
+"foreachelse" @keyword
 "function" @keyword
 
 ; #eq? is builtin to treesitter (or at least mentioned by the docs),
@@ -119,4 +121,9 @@
  ("foreach" @punctuation.special.foreach_start)
  (#lua-match? @punctuation.special.foreach_start "^%s*{foreach")
  (#offset! @punctuation.special.foreach_start 0 0 0 -7)
+)
+(
+ ("foreachelse" @punctuation.special.foreachelse_start)
+ (#lua-match? @punctuation.special.foreachelse_start "^%s*{foreachelse")
+ (#offset! @punctuation.special.foreachelse_start 0 0 0 -11)
 )
