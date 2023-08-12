@@ -19,6 +19,7 @@
 (smarty_function_call ["{" "}"] @punctuation.special)
 (smarty_function_call function_name: (smarty_name) @function.call)
 
+(smarty_interpolation) @embedded
 (smarty_interpolation ["{" "}"] @punctuation.special)
 
 (smarty_assignment ["{" "}"] @punctuation.special)
